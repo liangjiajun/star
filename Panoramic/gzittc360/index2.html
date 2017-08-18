@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>工贸360</title>
+<link rel="stylesheet" href="css/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="css/style2.css?ver=1" />
+<link rel="stylesheet" type="text/css" href="css/floor-position2.css">
+<script src="js/jquery.js"></script>
+<script src="js/jquery-ui.js"></script>
+<script src="js/bgmusic.js"></script>
+<script type="text/javascript" src="js/jquery.mousewheel.js"></script>
+<script type="text/javascript" src="js/Map2.js"></script>
+</head>
+<body id="body">
+<header>
+	<div id="school">
+		<div id="logo">
+			<a href="http://gzittc.com/forum/portal.php">
+				<img src="img/logo.png" alt="" title="广州市工贸技师学院">
+			</a>
+		</div>
+	</div>
+	<img src="img/3601..png" class="gm360_logo" alt="工贸360">
+	<a href="index.html" id="jianmo">切换建模版>></a>
+<!-- 	<div id="mobile_box">
+	移动版
+</div> -->
+</header>
+<div id="map"><!-- 地图背景 -->
+	<img src="img/imger7.png" alt=""usemap="#imger" id="imger"><!-- 学校区域图片 -->
+	<ul><!-- 焦点楼宇 -->
+		<li id="dehelou"><img src="img/school/dehelou.png" alt="url_error" border="0" usemap="#dehelou" title="德和楼">
+          <map name="dehelou">
+            <area shape="poly" coords="195,659,93,596,5,324,39,292,39,284,129,221,145,226,166,208,176,193,185,168,271,112,348,58,369,58,398,41,411,43,446,22,678,125,699,395,662,429,638,430,580,468,501,435,508,477,424,551,384,536,287,603,269,599" href="#" title="123123" id="maodian">
+          </map>
+		</li>
+		<li id="deyalou"><img src="img/school/deyalou.png" alt="url_error" border="0" usemap="#deyalou" title="德雅楼">
+          <map name="deyalou">
+            <area shape="poly" coords="18,227,23,295,154,352,161,367,186,588,283,636,333,594,330,511,487,367,489,122,500,107,491,95,372,53,368,34,281,4,221,60,207,57,195,81,176,74,173,105,146,98,137,119,120,116,111,137,79,141,79,164,40,155,15,177,16,200,5,215" href="#">
+          </map>
+		</li>
+		<li id="zhixuelou"><img src="img/school/zhixuelou.png" alt="url_error" border="0" usemap="#zhixuelou" title="知学楼">
+          <map name="zhixuelou">
+            <area shape="poly" coords="5,407,23,436,154,678,179,667,202,674,229,681,244,701,276,746,307,757,345,755,361,750,393,779,408,787,529,715,600,687,670,617,730,583,785,569,837,545,916,500,1011,438,1187,304,1207,268,1191,118,1194,110,1121,84,1012,136,984,119,966,29,904,5,609,138,605,126,556,103,474,141,485,185,449,201,408,185,363,224,331,235,300,238,250,251,213,267,170,297,186,318" href="#">
+          </map>
+		</li>
+		<li id="zhiminglou"><img src="img/school/zhiminglou.png" alt="url_error" border="0" usemap="#zhiminglou" title="知明楼">
+          <map name="zhiminglou">
+            <area shape="poly" coords="6,31,65,4,90,6,111,6,179,20,198,267,196,360,191,364,59,331,48,229,24,219" href="#">
+          </map>
+		</li>
+		<li id="zhixinglou"><img src="img/school/zhixinglou.png" alt="url_error" border="0" usemap="#zhixinglou" title="知行楼">
+          <map name="zhixinglou">
+            <area shape="poly" coords="5,70,36,49,41,32,69,15,493,97,463,345,386,412,383,451,383,458,328,446,311,462,6,383" href="#">
+          </map>
+		</li>
+		<li id="dexinlou"><img src="img/school/dexinlou.png" alt="url_error" border="0" usemap="#dexinlou" title="德馨楼">
+          <map name="dexinlou">
+            <area shape="poly" coords="21,79,50,555,93,563,114,549,220,574,220,597,256,607,293,600,307,589,316,262,342,243,356,225,377,214,381,80,362,71,360,48,374,43,383,32,187,4,171,15,188,21,191,40,186,53,87,36" href="#">
+          </map>
+		</li>
+		<li id="caochang"><img src="img/school/caochang.png" alt="url_error" border="0" usemap="#caochang" title='后操场'>
+          <map name="caochang">
+            <area shape="poly" coords="47,189,241,306,287,352,386,367,510,381,639,344,744,300,805,277,863,241,916,213,937,178,941,167,923,138,920,124,900,104,879,89,848,83,799,70,743,66,703,64,663,63,638,63,601,55,582,44,571,41,547,30,538,27,533,24" href="#">
+          </map>
+          
+		</li>
+		<li id="deqinlou"><img src="img/school/deqinlou.png" alt="url_error" border="0" usemap="#deqinlou" title='德勤楼'>
+          <map name="deqinlou">
+            <area shape="poly" coords="46,341,40,196,318,49,274,24,253,20,243,45,227,36,212,37,200,67,176,77,135,88,87,115,55,154,34,169,21,183,11,186,6,188,5,320" href="#">
+          </map>
+		</li>
+		<li id="dezhenglou"><img src="img/school/dezhenglou.png" alt="url_error" border="0" usemap="#dezhenglou" title='德正楼'>
+          <map name="dezhenglou">
+            <area shape="poly" coords="12,406,7,232,111,173,122,158,138,163,169,148,196,133,202,121,216,118,230,116,240,110,244,99,253,94,269,97,284,89,284,79,295,73,313,79,319,77,325,67,339,53,362,59,373,43,377,25,409,6,457,31,474,34,492,19,579,48,534,95,568,134,641,194,657,203,613,463,257,713,262,632" href="#">
+          </map>
+		</li>
+		<li id="fantang"><img src="img/school/fantang.png" alt="url_error" border="0" usemap="#fantang" title='饭堂'>
+          <map name="fantang">
+            <area shape="poly" coords="20,205,26,311,5,321,5,344,7,363,8,370,244,566,266,556,268,540,1149,1291,1306,1323,1439,1295,1514,1198,1555,1105,1562,1056,1541,992,1507,948,1444,882,1346,804,1279,706,1216,651,1156,605,1207,621,1164,593,1112,551,1032,504,607,207,463,109,391,65,343,24,325,13,321,7" href="#">
+          </map>
+		</li>
+		<li id="menkou"><img src="img/school/menkou.png" alt="url_error" border="0" usemap="#menkou" title='校门口'>
+          <map name="menkou">
+            <area shape="poly" coords="336,186,253,220,186,259,127,319,68,369,50,411,51,428,421,640,557,549,598,507,633,463,657,417,662,380,668,329,674,297,675,279,735,246,718,193,704,173,654,43,626,33,634,51,629,64,644,110,571,45,538,28,512,10,492,11,465,24,449,59,428,62,461,95,468,129" href="#">
+          </map>
+		</li>
+		<li id="xueshudating"><img src="img/school/xueshudating.png" alt="url_error" border="0" usemap="#xueshudating" title='学术报告大厅'>
+          <map name="xueshudating">
+            <area shape="poly" coords="37,442,16,463,101,572,134,556,150,590,200,569,232,597,333,539,493,422,522,437,598,384,578,363,650,319,655,228,404,8,34,247,49,265,8,293,6,318,45,366,6,396" href="#">
+          </map>
+		</li>
+		<li id="zhiyilou"><img src="img/school/zhiyilou.png" alt="url_error" border="0" usemap="#zhiyilou" title='知艺楼'>
+          <map name="zhiyilou">
+            <area shape="poly" coords="5,169,19,183,31,264,45,282,151,229,182,205,297,142,373,98,381,88,379,59,372,52,358,48,351,43,357,38,355,12,354,9,325,21,299,14,279,26,281,43,42,161" href="#">
+          </map>
+		</li>
+  </ul>
+
+</div>
+
+<!-- 放大缩小的插件 -->
+<input type="range" id="range" min="1" max="3" value="2">
+
+<!-- 弹出的小窗口 -->
+	<div class='newspan'>
+		<span id='bead'></span>
+		<span class='close'>x</span>
+		<h2>德和楼</h2>
+		<img src="img/spanimg/dehelou.jpg">
+		<span id='visit_site'></span>
+	</div>
+	<!-- 弹出的大窗口 -->
+
+	
+	<div id="bottom_box">
+		<div id="btn_box"><!-- 功能按钮栏目 -->
+			<ul>
+				<li></li>
+				<li></li>
+		  	</ul>
+		  	
+		</div>
+
+	</div>
+    <div class="round">
+		<span class="status pause"></span>
+    </div>
+
+		  	<audio controls="controls" id="bgMusic" loop="loop" style="display: none">
+	        <source src="audio/bg.mp3" type="audio/mpeg">
+	    </audio>
+	<div id="side_left"><!-- 左边栏 -->
+	<div class="side_title">地点引导</div>
+	<div class="side_close">x</div>
+		<ul>
+			<li><a href='#' class="scroll" name="menkou">校门口</a></li>
+			<li><a href='#' class="scroll" name="zhixuelou">知学楼</a></li>
+			<li><a href='#' class="scroll" name="dehelou">德和楼</a></li>
+			<li><a href='#' class="scroll" name="deyalou">德雅楼</a></li>
+			
+			<li><a href='#' class="scroll" name="dezhenglou">德正楼</a></li>
+			<li><a href="#" class="scroll" name="deqinlou">德勤楼</a></li>
+			<li><a href="#" class="scroll" name="zhiyilou">知艺楼</a></li>
+			<li><a href="#" class="scroll" name="zhiminglou">知明楼</a></li>
+			<li><a href="#" class="scroll" name="zhixinglou">知行楼</a></li>
+			<li><a href="#" class="scroll" name="dexinlou">德馨楼</a></li>
+			<li><a href="#" class="scroll" name="fantang">饭堂</a></li>
+			<li><a href='#' class="scroll" name="xueshudating">学术报告大厅</a></li>
+		</ul>
+	</div>
+
+	<div id="side_right"><!-- 右边栏 -->
+	<div class="side_title">地点全景</div>
+	<div class="side_close">x</div>
+		<ul>
+			<li title="menkou">校门口</li>
+			<li title="wenhuaguangchang">文化广场</li>
+			<li title="lanqiuchang">篮球场</li>
+			<li title="cad">CAD基地</li>
+			<li title="demaji">德玛吉</li>
+			<li title="kaerlade">卡尔拉得</li>
+			<li title="zhilengjidi">制冷基地</li>
+			<li title="chenggui">城轨实践室</li>
+			<li title="chengguozhanshiting">成果展示厅</li>
+			<li title="chengguo2">成果展示厅(世赛主题)</li>
+			<li title="chengguo3">成果展示厅(校企双制)</li>
+			<li title="chengguo4">成果展示厅(工学一体)</li>
+			<li title="fantang">饭堂</li>
+			<li title="sheyingpeng">摄影棚</li>
+			<li title="wangguan">网络系统管理基地</li>
+			<li title="buxian">网络布线基地</li>
+			<li title="jifang">苹果机房</li>
+			<li title="shangwuruanjian">商务软件解决方案</li>
+			<li title="yitihua">一体化课程</li>
+			<li title="webstudio">陈立准工作室</li>
+		</ul>
+	</div>
+
+
+	<div id="vr_box"><!-- 全景图窗口 -->
+		
+		<div id="vr_close"></div>
+		<div id="vr_more">!</div>
+		<div id="mask_box">
+			<span id="more"></span>
+		</div>
+	</div>
+
+	<div id="developer_box">
+	<div class="side_close">x</div>
+	<span id='xclogoimg'><img src="img/xclogo.png" alt=""></span>
+	<h1>星辰工作室</h1>
+	<ul id="icon">
+		<li class="supervisor">
+			<span></span>
+			<p>项目主管</p>
+			<h2>梁家俊</h2>
+		</li>
+		<li class="develop">
+			<span></span>
+			<p>项目开发</p>
+			<h2>方泽锋</h2>
+		</li>
+		<li class="picture">
+			<span></span>
+			<p>全景处理</p>
+			<h2>谢贵</h2>
+		</li>
+		<li class="photo">
+			<span></span>
+			<p>拍摄合作</p>
+			<h4>吴锐老师</h4>
+			<h4>梁天华同学</h4>
+			<h4>无人机团队</h4>
+		</li>
+		<li class="modeling">
+			<span></span>
+			<p>地图建模</p>
+			<h3>王博老师</h3>
+			<h3>及其团队</h3>
+		</li>
+	</ul>
+	<p class="team"><b>网站项目精英班团队简介：</b>网站项目精英班是一支自主驱动的技术型团队，团队精神是恒心、自律、创新、完美、追求，通过技能竞赛和项目开发锤炼着专业技能，平常我们会做一些网站相关的项目，例如：企业网站开发、网页游戏制作、后台系统管理、手机App集成等等。</p>
+	<p class="Belong">©广州市工贸技师学院  -  资源调配[教务处]  -  智信IT工坊</p>
+<!-- <b>制作团队：</b>星辰工作室/网站项目精英班<br/>
+<b>工贸360项目开发：</b>方泽锋、谢贵、梁家俊<br/>
+<b>配合拍摄团队：</b>吴锐老师和梁天华同学、无人机项目<br/>
+<b>单位：</b><br/>
+<br/>
+<b> -->
+	</div>
+	<div id="copy">
+		<img src="img/xclogo.png"><span>关于我们</span>
+	</div>
+	<style>/* 判断四个方向拖动极限范围（不用管） */
+		.limit_left1{
+			left: 0px !important;
+		}
+		.limit_right1{
+			left: -520px !important;
+		}
+		.limit_top1{
+			top: 0px !important;
+		}
+		.limit_bottom1{
+			top: -520px !important;
+		}
+
+		.limit_left2{
+			left: 960px !important;
+		}
+		.limit_right2{
+			left: -960px !important;
+		}
+		.limit_top2{
+			top: 520px !important;
+		}
+		.limit_bottom2{
+			top: -520px !important;
+		}
+
+		.limit_left3{
+			left: 1919px !important;
+		}
+		.limit_right3{
+			left: -1919px !important;
+		}
+		.limit_top3{
+			top: 1047px !important;
+		}
+		.limit_bottom3{
+			top: -1047px !important;
+		}
+	</style>
+</body>
+</html>
