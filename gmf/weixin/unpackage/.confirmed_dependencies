@@ -1,0 +1,71 @@
+{
+  "index.html": {
+    "resources": [
+      "js/ionic.min.js",
+      "img/pic1.png",
+      "img/banner.png",
+      "js/mui.min.js",
+      "fonts/icomoon.ttf",
+      "css/style.css",
+      "img/pic_n.png",
+      "css/icon.css",
+      "js/jquery.js",
+      "css/ionic.min.css",
+      "login.html"
+    ],
+    "refer": [
+      "violation.html",
+      "login.html"
+    ]
+  },
+  "login.html": {
+    "resources": [
+      "fonts/icomoon.ttf",
+      "css/style.css",
+      "css/icon.css",
+      "js/jquery.js",
+      "css/ionic.min.css",
+      "choice.html"
+    ],
+    "refer": [
+      "choice.html"
+    ]
+  },
+  "choice.html": {
+    "resources": [
+      "index.html"
+    ],
+    "refer": [
+      "index.html"
+    ]
+  },
+  "violation.html": {
+    "resources": [
+      "js/mui.min.js",
+      "fonts/icomoon.ttf",
+      "css/style.css",
+      "css/icon.css",
+      "js/jquery.js",
+      "css/ionic.min.css"
+    ],
+    "refer": [
+      "v_search.html"
+    ]
+  },
+  "v_search.html": {
+    "resources": [
+      "v_search_vio.html"
+    ],
+    "refer": [
+      "v_search_vio.html"
+    ]
+  },
+  "v_search_vio.html": {
+    "resources": [
+      "v_search.html"
+    ],
+    "refer": [
+      "v_search.html"
+    ]
+  }
+}

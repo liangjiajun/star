@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>v_content</title>
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <link href="css/ionic.min.css" rel="stylesheet">  
+  <link href="css/icon.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <script src='js/jquery.js'></script>
+  <script src="js/mui.min.js"></script>
+</head>
+  <body id="v_content">
+    <div class="bar bar-header">
+      <a class="button icon-chevron-thin-left button-clear">违纪扣分</a>
+      <a class="button icon-search button-clear"></a>
+    </div>
+    <div class="content has-header">
+      <div class="card">
+          <div class="item item-text-wrap">
+              <div class="item_left"></div>
+              <div class="item_right"></div>  
+              <div class="clear"></div>
+          </div>
+      </div>
+    </div>
+    <div class="content has-header ionic-pseudo">
+      <p class="list_title">扣分详情</p>
+      <div class="list">
+      </div>
+    </div>
+    <div class="bar bar-footer">
+      <div id="c_foot" class="title">星辰工作室 版权所有 2016</div>
+    </div>
+  </body>
+</html>
+<script>
+  
+$(document).ready(function(){
+
+  data_obj = JSON.parse(localStorage.obj);  //转换为对象
+  var text = "<b>"+data_obj.name+"</b><span>学号："+data_obj.number+"</span>";  
+  $(".item_left").append(text);
+  var rate = "<span>"+data_obj.rate+"</span>分"
+  $(".item_right").append(rate);
+  
+  var Classnum = data_obj.number;
+  var session_ids = sessionStorage.getItem("s_id");//取回students变量  
+
+  $.ajax({
+      url: "http://gmf.gzittc.net/conduct.php",
+      data: "Classnum="+Classnum+"&jsoncallback=?",
+      type: "get",
+      dataType: "jsonp",  
+      jsonp: "jsonpcallback",
+      success: function(data) {
+      var json_data = JSON.parse(data), 
+          topic_hours = '',
+          all_type = json_data[session_ids].type;//考勤类型
+      if(all_type !=1 && all_type !=2 && all_type !=3){
+          switch(json_data[session_ids].topic){
+            case '11':
+              topic_hours='第一节';
+              break;
+            case '12':
+              topic_hours='第二节';
+              break;
+            case '21':
+              topic_hours='第三节';
+              break;
+            case '22':
+              topic_hours='第四节';
+              break;
+            case '31':
+              topic_hours='早班第五节';
+              break;
+            case '32':
+              topic_hours='早班第六节';
+              break;
+            case '41':
+              topic_hours='第五节';
+              break;
+            case '42':
+              topic_hours='第六节';
+              break;
+            case '51':
+              topic_hours='第七节';
+              break;
+            case '52':
+              topic_hours='第八节';
+              break;
+            case '61':
+              topic_hours='中班第九节';
+              break;
+            case '62':
+              topic_hours='中班第十节';
+              break;
+            case '71':
+              topic_hours='第九节';
+              break;
+            case '72':
+              topic_hours='第十节';
+              break;
+            case '81':
+              topic_hours='第十一节';
+              break;
+            case '82':
+              topic_hours='第十二节';
+              break;
+            default:
+              topic_hours="未知";  
+          }
+      var trss2 = "<div class='list_card'>"+topic_hours+":"+json_data[session_ids].record+"</div>";
+      $(".list").append(trss2);
+      }//判断考勤 END
+
+      } //回调 END
+  }); //ajax END 
+
+
+
+  /*返回事件*/
+
+    $('.icon-chevron-thin-left').click(function() {
+      //打开关于页面
+      mui.back();
+    });
+
+    /*返回事件*/
+
+      $('.icon-search').click(function() {
+        //打开关于页面
+        mui.openWindow({
+          url: 'v_search.html'
+        });
+      });
+      
+})//预加载 END
+
+</script>

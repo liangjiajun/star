@@ -1,0 +1,136 @@
+body{font-family: Tahoma,"Microsoft YaHei","Helvetica Neue", "Roboto", "Segoe UI", sans-serif;}
+body, .ionic-body{overflow: visible;}
+a.button.button-clear{color: #fff;}
+.clear{clear: both;}
+a{text-decoration: none;}
+.has-header{top: 50px;}
+.bar-header{background-color: #2e9945;}
+.bar-header.bar-header{border-bottom: 1px solid #2e9945;}
+.icon-chevron-thin-left.button-clear{color:#fff;}
+.icon-search.button-clear{background-color: rgba(0,0,0,0);color: #fff;}
+.item-icon-right .icon{font-size: 20px;}
+#c_foot{font-size: 0.8em;color:#ccc;}
+.bar.bar-footer{background:rgba(0,0,0,0);}
+.scroll-content{padding: 10px;  overflow-y:scroll; position: relative; }
+
+
+/*login */
+#login .item-input{border: 0;border-bottom: 1px solid #ccc;}
+#login .item-input input{text-align: center;font-size: 12px;}
+#login input::-o-input-placeholder{text-align: center;}
+#login input::-ms-input-placeholder{text-align: center;}
+#login input::-moz-input-placeholder{text-align: center;}
+#login input::-webkit-input-placeholder{text-align: center;}
+#login .padding{padding: 80px;margin: 20% 0 0;}
+
+
+/* choice */
+#choice .item{background-color: #eee;}
+#choice .item span{color:#666;font-size: 14px;}
+#choice .item-icon-right .icon{color:#ccc;}
+
+/* index */
+#index .has-header{top: 43px;}
+#index .con{width: 100%;height: 100%;}
+#index .con a{color:#666;}
+#index .con li{float: left;width: 23.333%;margin:3% 5%;text-align: center;}
+#index .con img{width: 100%;}
+#index .bg-black{position: fixed;width: 100%;height: 100%;top: 0;left: 0;background: rgba(0,0,0,.5);z-index: 999;}
+#index .bg-white{position: absolute;margin:80% 10%;width:80%; background:url(../img/background-1.png) bottom right no-repeat;border-radius:15px;	transform: translateY(-50%); -ms-transform: translateY(-50%);-webkit-transform: translateY(-50%);} 
+#index .bg-white>.bar-header{border-radius: 10px 10px 0 0;}
+#index .white-ccc{background: #fff;}
+
+.tip-title{background:#c7fbde url(../img/background-2.png) no-repeat center right;border-radius: 10px 10px 0 0;text-align:center; line-height:5em; font-size:1.7em; color:#72a086;}
+.tip-close{height:45px; width:45px; background:url(../img/close.png); position:absolute; top:-15px; right:-10px;}
+.tip-close:hover{cursor:pointer;}
+.tip-lists{padding:20px 0 30px 30px;border-radius: 0 0 10px 10px;max-height:195px;overflow-y: scroll;}
+.tip-lists li{ margin:0 0 15px -8px; padding:0 25px; background:url(../img/list-style.png) no-repeat left 45%;color: #959595; }
+.tip-lists p{text-align: center;text-indent: -10px;}
+
+
+
+/* violation */
+#violation .item{background-color: #eee;}
+#violation .item_left{float: left;}
+#violation .item_left b{line-height: 2em;display: block;}
+#violation .item_left span{color: #999;display: block;}
+#violation .item_right{float: right;color: #999;}
+#violation .item_right span{font-size: 2em;line-height: 2em;color: #666;}
+#violation .list_title{color: #999;margin:0 0 10px 10px;}
+#violation .item.item-icon-right{cursor: pointer;}
+#violation .item-icon-right .icon{color:#ccc;}
+#violation .item_menu li{float:left;color:#666;font-size: 0.8em;width: 28%;text-align: center;}
+#violation .item_menu li:nth-child(even){width: 8%;}
+#violation .item_menu li span{color:#ccc;}
+#violation .item_null{color: #999;}
+
+/* v_content */
+
+#v_content .item{background-color: #eee;}
+#v_content .item_left{float: left;}
+#v_content .item_left b{line-height: 2em;display: block;}
+#v_content .item_left span{color: #999;display: block;}
+#v_content .item_right{float: right;color: #999;}
+#v_content .item_right span{font-size: 2em;line-height: 2em;color: #666;}
+#v_content .list_title{color: #999;margin:0 0 10px 10px;}
+#v_content .list_card{width: 100%;background-color: #eee;height: 100%;padding:20px;color:#666;}
+#v_content .item-icon-right .icon{color:#ccc;}
+#v_content .item_menu li{float:left;color:#666;font-size: 0.8em;width: 28%;text-align: center;}
+#v_content .item_menu li:nth-child(even){width: 8%;}
+#v_content .item_menu li span{color:#ccc;}
+#v_content .item_menu li span{color:#ccc;}
+
+/* v_search */
+#v_search .item{background-color: #eee;}
+#v_search .item_left{float: left;}
+#v_search .item_left b{line-height: 2em;display: block;}
+#v_search .item_left span{color: #999;display: block;}
+#v_search .item_right{float: right;color: #999;}
+#v_search .item_right span{font-size: 2em;line-height: 2em;color: #666;}
+#v_search .list_title{color: #999;margin:0 0 10px 10px;}
+#v_search .list_option{width: 40%;text-align: center;}
+
+/* v_search_vio */
+
+#v_search_vio .item{background-color: #eee;}
+#v_search_vio .item_left{float: left;}
+#v_search_vio .item_left b{line-height: 2em;display: block;}
+#v_search_vio .item_left span{color: #999;display: block;}
+#v_search_vio .item_right{float: right;color: #999;}
+#v_search_vio .item_right span{font-size: 2em;line-height: 2em;color: #666;}
+#v_search_vio .list_title{color: #999;margin:0 0 10px 10px;}
+#v_search_vio .list_card{width: 100%;background-color: #eee;height: 100%;padding:20px;color:#666;}
+#v_search_vio .item-icon-right .icon{color:#ccc;}
+#v_search_vio .item_menu li{float:left;color:#666;font-size: 0.8em;width: 28%;text-align: center;}
+#v_search_vio .item_menu li:nth-child(even){width: 8%;}
+#v_search_vio .item_menu li span{color:#ccc;}
+#v_search_vio .item_menu li span{color:#ccc;}
+
+
+/* animation 加载动画 */
+.spinner {margin: 100px auto; width: 50px; height: 60px; text-align: center; font-size: 10px;position: absolute;z-index: 99;left: 45%; }
+.spinner > div {background-color: #2e9945; height: 100%; width: 6px; display: inline-block; -webkit-animation: stretchdelay 1.2s infinite ease-in-out; animation: stretchdelay 1.2s infinite ease-in-out; }
+.spinner .rect2 {-webkit-animation-delay: -1.1s; animation-delay: -1.1s; }
+.spinner .rect3 {-webkit-animation-delay: -1.0s; animation-delay: -1.0s; }
+.spinner .rect4 {-webkit-animation-delay: -0.9s; animation-delay: -0.9s; }
+.spinner .rect5 {-webkit-animation-delay: -0.8s; animation-delay: -0.8s; }
+@-webkit-keyframes stretchdelay {
+  0%, 40%, 100% { -webkit-transform: scaleY(0.4) } 
+  20% { -webkit-transform: scaleY(1.0) }
+}
+ 
+@keyframes stretchdelay {
+  0%, 40%, 100% {
+    transform: scaleY(0.4);
+    -webkit-transform: scaleY(0.4);
+  }  20% {
+    transform: scaleY(1.0);
+    -webkit-transform: scaleY(1.0);
+  }
+}
+
+
+
+
+
+
