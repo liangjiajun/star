@@ -1,0 +1,111 @@
+address{
+	width: 65%;
+	margin: 20px auto;
+	font-style: normal;
+}
+address header{height: 40px;background: #0092aa; color: #fff;line-height: 40px;}
+address header h2{padding-left: 10px;}
+.question-text{
+	width: 60%;
+	float: left;
+	line-height: 40px;
+	background: #fff;
+}
+.question-text sup{
+	color: #f00;
+	margin-right: 5px;
+}
+form{
+	padding:10px 40px 40px 40px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	position: relative;
+}
+select{width: 20%;height: 30px;}
+label{display: block; font-size: 16px;color: #19BADA;}
+label:first-child{display: inline-block;}
+input{display: block;
+	height: 30px;
+	width: 100%;
+	border-radius: 5px;
+	border: 1px solid #9e9e9e;
+	margin-bottom: 15px;
+	text-indent: 10px;
+	font-size: 16px;
+}
+textarea{
+	width: 100%;
+	height: 100px;
+	padding: 10px;
+	font-size: 16px;
+	border-radius: 10px;
+}
+.cc{
+	color: #999;
+}
+button{
+	width: 100%;
+	height: 30px;
+	cursor: pointer;
+	border-radius: 5px;
+	background: #0091ab;
+	color: #fff;
+	font-size: 18px;
+	border: none;
+}
+button:hover{
+	background: #0A7386;
+}
+
+.question-update{
+	float: right;
+	width: 36%;
+	background: #fff;
+}
+.question-update header{
+	width: 100%;
+	height: 40px;	
+}
+.more-question span{display: block; text-indent: 20px; color: #666;}
+.more-question a{
+	padding: 10px;
+	width: 50%;
+	margin:10px auto;
+	border: 2px solid #666;
+	border-radius: 10px;
+	text-align: center;
+	display: block;
+	font-size: 18px;
+	color: #333;
+}
+.drop_area{
+	width: 94%;
+	margin:10px auto;
+	height: 300px;
+	border: 3px dashed #ccc;
+	background-image: url(../images/drop-bg.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	-webkit-background-size: 50%;
+	background-size: 50%;
+	position: relative;
+	overflow: hidden;
+}
+.area_text{
+	position: absolute;
+	top: 70%;
+	left: 36%;
+}
+.area_update input{
+	border: none;
+	margin: 10px auto;
+}
+.area_update  .txt{ height:22px; border:1px solid #cdcdcd; width:80%;float: left;} 
+.area_update .btn{ background-color:#FFF; border:1px solid #CDCDCD;height:24px; width:70px; float: right;} 
+.area_update .file{ position:absolute; top:6px; left:30px; 
+	height:24px; 
+	 filter:alpha(opacity:0);opacity: 0; 
+	width:100%;
+	 cursor: pointer;
+	  }

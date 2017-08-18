@@ -1,0 +1,223 @@
+.clear{
+	clear: both;
+}
+address{
+	width: 65%;
+	margin: 20px auto;
+	font-style: normal;
+	position: relative;	
+}
+.top-type{
+	height: 60px;
+	line-height: 60px;
+	background: #fff;
+	padding: 0 20px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.top-type span{
+	font-size: 24px;
+	margin-left: 5px;
+}
+.top-type img{
+	width: 4%;
+	float: left;
+	margin-top: 3px;
+}
+.type-level{
+	float: right;
+	font-size: 15px;
+}
+.question{
+	background: #fff;
+	margin-top: 20px;
+}
+.question header{
+	height: 60px;
+	line-height: 60px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 0 20px;
+	background: #47c0d2;
+	color: #fff;
+}
+
+.question header img{width: 50px;height: 50px; float: left;display: block;padding-top: 5px;}
+.question-content{
+	width: 60%;
+	margin:15px auto;
+	padding-bottom: 20px;
+}
+.question-content .rightIssue{display: none;border: 0; width: 100%; text-indent: 50px;}
+.question-content .rightIssue:hover{border: 0;}
+.fzw{
+	text-align: center;
+	font-weight: 800;
+}
+.fzw span{display: none;}
+.question-content ul{
+	margin-top: 50px;
+}
+.question-content li{
+	width: 95%;
+	border: 1px solid #ccc;
+	margin: 20px 0;
+	cursor: pointer;
+}
+.question-content li:before{
+	width: 2%;
+	border-right: 1px solid #ccc;
+	margin-right: 20px;
+	padding-right: 10px;
+	float: left;
+	line-height: 60px;
+	padding-left: 20px;
+	font-weight: 600;
+}
+.question-content li:nth-child(1):before{content: "A"; }
+.question-content li:nth-child(2):before{content: "B"; }
+.question-content li:nth-child(3):before{content: "C"; }
+.question-content li:nth-child(4):before{content: "D"; }
+.question-content a{
+	color: #666;
+	width: 100%;
+	padding: 20px 0;
+	display: block;
+	text-indent: 20px;
+	font-size: 16px;
+}
+.question-content li:hover{
+	border: 1px solid #14b7bf;
+}
+.question-content li:hover:before{
+	color: #14b7bf;
+	border-right: 1px solid #14b7bf;
+}
+.question-content li:hover a{
+	color: #14b7bf;	
+}
+.question_btn{
+	width: 3%;
+	height: 600px;
+	position: fixed;
+	z-index: 999;
+	top: 25%;
+	right: 10%;
+}
+.question_btn li{
+	padding: 8px 0;
+	text-align: center;
+	background: #47c0d2;
+	margin-bottom: 5px;
+	cursor: pointer;
+	color: #fff;
+	position: relative;
+}
+.question_btn li span{
+	position: absolute;
+	right: 95%;
+	top: 0;
+	width: 100px;
+	line-height: 35px;	
+	height: 35px;
+	background: #ccc;
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	white-space: normal;
+	display: none;
+}
+.num_uesr{
+	width: 100px;
+	height: 100px;
+	background: #7ACFDC;
+	position: fixed;
+	top:350px;
+	left: 21%;
+	text-align: center;
+	color: #fff;
+}
+.num_uesr h3{
+	height: 30px;
+	line-height: 30px;
+	background: #47c0d2;
+}
+.num_uesr span{
+	margin-top: 8px;
+	display: block;
+	font-size: 40px;
+}
+
+.answer_btn{
+	width: 100%;
+	margin:30px auto;
+}
+.answer_btn button{
+	width: 95%;
+	height: 30px;
+	background: #47c0d2;
+	border: 0;
+	border-radius: 15px;
+	font-size: 20px;
+	color: #fff;
+	cursor: pointer;
+} 
+.answer_btn button:hover{
+	background: #469CA9;
+}
+
+
+
+
+.worng{
+	background-image:url(../images/no.png);
+	background-repeat: no-repeat;
+	background-position: center right;
+}
+.right{
+	background-image:url(../images/yes.png);
+	background-repeat: no-repeat;
+	background-position: center right;
+}
+
+
+
+.wrap_bg{
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 999;
+	width: 100%;
+	height: 100%;
+	background: #042F35;
+	opacity: .6;
+	color: #fff;
+	display: none;
+}
+.wrap_bg  h3{font-size: 120px;text-align: center;margin-top: 20px;}
+.wrap_bg span{text-align: center;display: block;font-size: 100px;margin-top: 70px;}
+.wrap_bg span i{margin: 0 35px; font-size: 110px;}
+.wrap_bg nav{
+	width: 80%;
+	position: fixed;
+	z-index: 9999;
+	top: 45%;
+	left: 20%;	
+	font-size: 100px;
+}
+.wrap_bg nav li{
+	float: left;
+	padding: 0 50px;
+}
+.wrap_bg nav li a{
+	color: #fff;
+} 
+.wrap_bg nav li:first-child:before{
+	content: "<-";
+}
+.wrap_bg nav li:last-child:after{
+	content: "->";
+}

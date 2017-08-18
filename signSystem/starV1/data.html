@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>星辰平台</title>
+	<link rel="stylesheet" href="Style/reset.css">
+	<link rel="stylesheet" href="Style/base.css">
+	<link rel="stylesheet" href="Style/data.css">
+	<script src="Javascript/vue.js"></script>
+	<script src="Javascript/vue_resource.js"></script>
+</head>
+<body>
+<div id="wrap" v-cloak>
+	<header-area></header-area>
+	<section class="page">
+		<div class="data">
+			<div class="data-main">
+				<div class="data-min-data">
+					<div class="d-m-sign-count">
+						<h4>今日签到人数</h4>
+						<span>{{signAllNum}}人</span>
+					</div>
+					<div class="d-m-sign-late">
+						<h4>今日迟到人数</h4>
+						<span>{{lastAllNum}}人</span>
+					</div>
+					<div class="d-m-sign-up">
+						<h4>最早签到</h4>
+						<span>{{signStart}}</span>
+					</div>
+					<div class="d-m-sign-down">
+						<h4>最晚签退</h4>
+						<span>{{signLast}}</span>
+					</div>
+				</div>
+				<div class="data-user-sign">
+					<h4 class="data-title-h4">成员考勤详情</h4>
+					<div class="data-chart">
+						<ul>
+							<li v-for="month in signMonth">
+								<p>
+									{{month}}月份学生考勤数据汇总表
+									<a class="d-u-normal" :href="'php/sign.php?signMonthDateExprot&date=' + month">导出考勤数据</a>
+								</p>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</section>
+</div>
+
+</body>
+</html>
+<script src="Javascript/basePage.js"></script>
+<script>
+	new Vue({
+		el:'#wrap',
+		data:{
+			signUrl:'php/sign.php',
+			signAllNum:'',
+			lastAllNum:'',
+			signStart:'',
+			signLast:'',
+			signMonth:[],
+		},
+		created(){
+			/*获取全局统计*/
+			signData={signData:''}
+			this.$http.post(this.signUrl,signData).then(function(data){
+				this.signAllNum=data.body.signNum;
+				this.lastAllNum=data.body.lastNum;
+				this.signStart=data.body.signEarly;
+				this.signLast=data.body.signLast;
+		    })
+			/*以月份获取考勤数据并导出*/
+			signMonthDate={signMonthDate:''}
+			this.$http.post(this.signUrl,signMonthDate).then(function(data){
+				data.body.reverse();
+				this.signMonth = data.body;
+		    })
+		}
+	})
+</script>

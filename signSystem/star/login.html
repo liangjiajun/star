@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>星辰平台</title>
+	<link rel="stylesheet" href="sourcus/Style/reset.css">
+	<link rel="stylesheet" href="sourcus/Style/login.css">
+	<script src="sourcus/Javascript/fun.js"></script>
+	<script src="sourcus/Javascript/vue.js"></script>
+</head>
+<body>
+	<div class="flex-box wrap flex-direction" v-cloak>
+		<header class="flex-box">
+			<h1>
+				<img src="sourcus/Images/logo_v2.png" alt="logo">
+			</h1>
+			<ul class="clear">
+				<li v-on:click="layout = 'reg-wrap'"  v-bind:class="{nav_active: layout == 'reg-wrap'}">Register</li>
+				<li v-on:click="layout = 'login-wrap'" v-bind:class="{nav_active: layout == 'login-wrap'}">Login</li>
+			</ul>
+		</header>
+		<section v-show="layout == 'login-wrap'" class="login-wrap">
+			<h2>Welcome<span> back!</span></h2>
+			<form method="post" action="sourcus/php/login.php">	
+				<label>
+					<span class="user-name-icon"></span>
+					<input type="text" placeholder="Username" name="username">
+				</label>
+				<label>
+					<span class="user-password-icon"></span>
+					<input type="password" placeholder="Password" name="userpass">
+				</label>
+				<button type="submit" name="sub">Enter</button>
+				<p v-bind:class="[Error]">用户名或密码错误 用户不存在,脱产使用</p>
+				<p v-bind:class="[IPErr]">登录异常，不是常登录地址</p>
+			</form>
+		</section>
+
+		<section v-show="layout == 'reg-wrap'" class="reg-wrap">
+			<h2>Register<span> users!</span></h2>
+			<form method="post" action="sourcus/php/login.php" v-if="openRoot">	
+				<label>
+					<span class="user-name-icon"></span>
+					<input type="text" placeholder="Username" name="username">
+				</label>
+				<label>
+					<span class="user-password-icon"></span>
+					<input type="password" placeholder="Password" name="password">
+				</label>
+				<label>
+					<span class="user-password-icon"></span>
+					<input type="password" placeholder="Chick password again" name="againpass">
+				</label>
+				<button type="submit" name="reg">Enter</button>
+				<p v-bind:class="[regErr]">二次密码错误</p>
+			</form>
+			<h2 v-else>注册权限尚未开放</h2>
+		</section>
+
+	</div>
+</body>
+</html>
+<script>
+
+new Vue({
+	el:'.wrap',
+	data:{
+		layout:'login-wrap',
+		Error:'hide',
+		regErr:'hide',
+		IPErr:'hide',
+		openRoot:false
+	},
+	created(){
+		this.checkCookie()
+	},
+	methods:{
+		checkCookie(){
+			if(GetQueryString('err')=='error'){
+				this.Error = 'error';
+			}else if(GetQueryString('err')=='reg'){
+				this.layout='reg-wrap';
+				this.regErr = 'error';
+			}else if(GetQueryString('err')=='ipErr'){
+				this.IPErr = 'error';
+			}
+		}
+		
+	}
+})
+
+if(localStorage.userMessage){
+	localStorage.removeItem('userMessage');
+}
+
+
+</script>

@@ -1,0 +1,45 @@
+.aboutus h3{
+	text-align: center;
+	padding: 20px 0;
+}
+.about_data{
+	width: 80%;
+	margin: 0 auto;
+}
+.user_data{
+	width: 22%;
+	float: left;
+	margin-right: 3%;
+	margin-bottom: 2%;
+	text-indent: 15px;
+	border-radius: 5px;
+	overflow: hidden;
+	background: #ccc;
+}
+.user_data .about_top{
+	height: 30px;
+	line-height: 30px;
+	font-size: 16px;
+	color: #fff;
+	background: #1399AD;
+	position: relative;
+}
+.user_data .data{
+	display:flex;
+	-webkit-display:flex;
+	line-height: 30px;
+}
+.user_data .data span{
+	-webkit-flex: 1;
+	flex: 1;
+	background: #BDE1E6;
+	border-bottom: 1px solid #B9E3E8;
+	margin-top: 1px;
+}
+.user_data .data .data_time{
+	-webkit-flex: 2;
+	flex: 2;
+}
+.user_data .data .data_type{
+	display:block;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}

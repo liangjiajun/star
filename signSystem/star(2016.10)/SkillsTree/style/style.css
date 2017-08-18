@@ -1,0 +1,35 @@
+
+
+body,html{ width:100%; height:100%; font-family:Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", monospace, "微软雅黑", "黑体"; font-size:14px;}
+*{margin: 0;padding: 0;}
+.none{ display:none;}
+.block{ display:block;}
+.yellow{ background: #f3a802; border: 1px solid #E69626;}
+.blue{ background:#2b72bf; border: 1px solid #265E9B;}
+.red{ background: #E43636; border: 1px solid #C31B1B;}
+
+/* oper */
+.skillstree{ position: absolute; top: 50px; left: 0; right: 0; bottom: 0;}
+h3{ padding: 10px; color: #fff;}
+.oper{ position: absolute; right:0; top: 0; bottom:0; width:25%; background:#fff; overflow-y:auto;}
+.padd{ padding: 20px;}
+.rad_5{ border-radius: 5px;}
+.enter .input{ padding: 10px; border: 1px solid #ccc; background: #eee; min-height: 40px;}
+.enter .btn{ color: #fff; cursor: pointer; font-weight: bold; height: 40px;}
+.enter > *{ box-sizing: border-box; width: 100%; margin-bottom: 10px;}
+
+/* svg */
+#skills{background:#eee; display:block; font-size: 12px;}
+#skills *{ transition: all 0.2s;}
+#overall{ fill: #DDDDDD;}
+rect{ rx: 8; ry: 8; stroke: #555555; stroke-width: 1;}
+.node{ cursor:pointer;}
+.node[active="true"] rect{ stroke-width: 2;}
+.node[doing]{ fill: #F7DAB6;}
+.node[done]{ fill: #ADE8C0;}
+text{ dominant-baseline:central; text-anchor:middle; fill: #555555;}
+polyline{ stroke: #555555; stroke-width: 1;}
+
+.list{ border:1px solid #ccc; border-radius:5px; padding:10px; height:300px; overflow-y:auto}
+.content{ word-wrap:break-word; line-height:24px;}
+

@@ -1,0 +1,31 @@
+/*default style*/
+*{box-sizing: border-box;}
+[v-cloak]{display: none;}
+body,html{font-family:'Microsoft Yahei';background:linear-gradient(#fff1eb,#ace0f9);height: 92vh;}
+input,button,select,textarea{outline:none}
+.flex-box{display:flex;flex-wrap:wrap;}
+.flex-direction{flex-direction: column;}
+.ellipses{white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+.hide{display: none;}
+.clear:after{content: "";display: block;clear: both;}
+
+.wrap{width: 70%;height: 850px;background: #fff;margin: 80px auto 0;box-shadow: 0 0 139px rgba(147,161,185,.6);}
+header{height: 147px;background:#001b4a;color: white;font-size: 24px;justify-content: space-between;line-height: 137px;}
+header h1{padding: 10px 0 0 30px;}
+header img{max-width: 70%;}
+header li{float: left;padding: 0 60px;cursor: pointer;}
+.nav_active{border-bottom: 10px solid  #5584ff;}
+
+h2{text-align: center;padding: 95px 0 120px 0;font-size: 48px;}
+.reg-wrap h2{padding: 95px 0 80px 0;}
+h2 span{color:#5384ff;}
+
+form{width: 575px;margin: 0 auto;}
+label{position: relative;}
+label span{display: block;width: 28px;height: 28px;position: absolute;z-index: 1;top: 10px;background-size: 100% 100%;}
+.user-name-icon{background:url(../Images/user_icon.png) no-repeat center;}
+.user-password-icon{background:url(../Images/password_icon.png) no-repeat center;}
+
+input{line-height: 55px;width: 100%;border:0;border-bottom: 1px solid  #d4d9e3;font-size: 20px;text-indent: 50px;margin-bottom: 45px;display: block;}
+button{margin: 80px auto 0;width: 387px;height: 71px;border:0;border-radius: 35.5px;display: block;color: white;background: #5584ff;font-size: 18px;}
+.error{color: red;text-align: center;font-size: 24px;margin-top: 30px;}

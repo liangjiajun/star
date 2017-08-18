@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>星辰平台</title>
+	<link rel="stylesheet" href="sourcus/Style/reset.css">
+	<link rel="stylesheet" href="sourcus/Style/style.css">
+	<link rel="stylesheet" href="sourcus/Style/main.css">
+	<script src="sourcus/Javascript/fun.js"></script>
+	<script src="sourcus/Javascript/vue.js"></script>
+	<script src="sourcus/Javascript/vue_resource.js"></script>
+</head>
+<body >
+	<div class="flex-box">
+		<header class="flex-box flex-direction">
+			<h1 class="box-sizing">
+				<a href="index.html"><img src="sourcus/Images/logo_v2.png" alt="logo"></a>
+			</h1>
+			<nav>
+				<ul>
+					<li><a href="index.html" title="首页"><span class="img1" icon-name="首页"></span></a></li>
+					<li><a href="userList.html" title="成员"><span class="img1" icon-name="成员"></span></a></li>
+					<li><a href="work.html" title="作品"><span class="img1" icon-name="作品"></span></a></li>
+					<li><a href="manage.html" title="管理"><span class="img1" icon-name="管理"></span></a></li>
+				</ul>
+			</nav>
+			<footer>
+				星辰工作室
+			</footer>
+		</header>
+		<div class="content">
+			<div id="content">
+				<div class="top flex-box" class="userData" style="height: 100px;padding: 25px 55px;"> 
+					<div class="title">
+						<h2>星辰工作室-星辰平台</h2>
+						<p>我们都是浩瀚宇宙的小小星辰</p>
+					</div>
+					<form class="user_area flex-box" method="post" action="sourcus/php/login.php">
+						<span v-bind:style="userFace"></span>
+						<p>{{userName}}</p>
+						<a :href="userUpdate"></a>
+						<input type="hidden" name="usersignid" v-bind:value="signId">
+						<button type="submit" name="logout"></button>
+					</form>
+				</div>
+			</div>
+			<div class="paper-wrap">
+				<iframe id="paper" width="100%" height="800px" src="http://192.168.71.233/Franzory/upload_exam" frameborder="0">
+				</iframe>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+<script>
+Vue.http.options.emulateJSON = true;
+var paperDom = document.querySelector('#paper');
+paperDom.src = paperDom.src+'?key='+GetQueryString('key'); 
+
+/*用户信息*/
+var userLogin = new Vue({
+    el:'#content',
+    data:{
+    	userName:'',
+    	userId:'',
+    	userFace:'',
+    	userRoot:'',
+		signId:'',
+		userUpdate:'',
+		onlineTime:'',
+		signTime:'',
+    	apiUrl:'sourcus/php/user.php'
+    },
+    created(){
+		var userLoginData={userData:'userGetData'}
+		this.$http.post(this.apiUrl,userLoginData).then(function(data){
+
+	        	if(data.body==1){
+	        		window.location.href='login.html';
+	        	}else{
+	        		
+	        		this.userName =data.body.userName;
+	        		this.userId =data.body.userId;
+	        		this.userRoot =data.body.userRoot;
+	        		this.signId =data.body.signId;
+	        		this.userUpdate = 'user.html?uid='+data.body.userId;
+	        		this.userFace={
+	        			background:'url('+data.body.userFace+') no-repeat center',
+	        			backgroundSize: '100% 100%'
+	        		}
+
+	        		var obj = JSON.stringify(data.body);
+	        		localStorage.setItem('userMessage',obj);
+
+	        	}
+	      	 
+
+	    })
+
+    }
+})
+</script>

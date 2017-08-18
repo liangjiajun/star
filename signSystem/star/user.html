@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>星辰平台</title>
+	<link rel="stylesheet" href="sourcus/Style/reset.css">
+	<link rel="stylesheet" href="sourcus/Style/style.css">
+	<link rel="stylesheet" href="sourcus/Style/main.css">
+	<script src="sourcus/Javascript/fun.js"></script>
+	<script src="sourcus/Javascript/vue.js"></script>
+	<script src="sourcus/Javascript/vue_resource.js"></script>
+</head>
+<body >
+	<div class="flex-box">
+		<header class="flex-box flex-direction">
+			<h1 class="box-sizing">
+				<a href="index.html"><img src="sourcus/Images/logo_v2.png" alt="logo"></a>
+			</h1>
+			<nav>
+				<ul>
+					<li><a href="index.html" title="首页"><span class="img1" icon-name="首页"></span></a></li>
+					<li><a href="userList.html" title="成员"><span class="img1" icon-name="成员"></span></a></li>
+					<li><a href="work.html" title="作品"><span class="img1" icon-name="作品"></span></a></li>
+					<li><a href="manage.html" title="管理"><span class="img1" icon-name="管理"></span></a></li>
+				</ul>
+			</nav>
+			<footer>
+				星辰工作室
+			</footer>
+		</header>
+		<div class="content">
+			<div id="content">
+				<div class="top flex-box" class="userData"> 
+					<div class="title">
+						<h2>星辰工作室-星辰平台</h2>
+						<p>我们都是浩瀚宇宙的小小星辰</p>
+					</div>
+					<form class="user_area flex-box" method="post" action="sourcus/php/login.php">
+						<span v-bind:style="userFace"></span>
+						<p>{{userName}}</p>
+						<a :href="userUpdate"></a>
+						<input type="hidden" name="usersignid" v-bind:value="signId">
+						<button type="submit" name="logout"></button>
+					</form>
+				</div>
+			</div>
+			<div class="users-message" id="user-msg" v-cloak>
+				<h2> 
+					个人信息中心
+					<a v-if="btnUserRoot" v-on:click="changeFaces('msgEdit')" class="user-msg-edit"></a>
+					<a v-if="btnUserRoot" v-on:click="changeFaces('faceEdit')" class="user-face-edit"></a>
+					<a v-if="btnUserRoot" v-on:click="changeFaces('umsg')" class="user-msg"></a>
+					<a v-if="btnUserRoot" v-on:click="changeFaces('item')" class="user-item"></a>
+				</h2>
+				<ul v-if="userItemList" class="user-item-list flex-box " >
+					<li v-for="item in itemLists">
+						<a v-bind:href="item.item_url">
+							<span class="item-image" v-bind:style="item.item_photo"></span>
+							<h4 class="ellipses">{{item.item_name}}</h4>
+							<span class="item-hot-area">{{item.item_hot}}</span>
+						</a>
+					</li>
+				</ul>
+				<div v-if="userMsgData" class="user-msg-data " v-for="user in userLists">
+						<ul class="user-face flex-box" >
+							<li class="flex-box">
+								<p>
+									<img v-bind:src="user.photo" >
+								</p>
+								<strong>证件相</strong>
+							</li>
+							<li class="flex-box">
+								<p>
+									<img v-bind:src="user.face" >
+								</p>
+								<strong>头像</strong>
+							</li>
+						</ul>
+						<p>姓名：{{user.name}}</p>
+						<p>身高：{{user.height}}</p>
+						<p>邮箱：{{user.username}}</p>
+						<p>生日：{{user.Birth}}</p>
+						<p>班级：{{user.Class}}</p>
+						<p>手机：{{user.Phone}}</p>
+						<p>qq：{{user.QQ}}</p>
+						<p>地址：{{user.address}}</p>
+						<p>身份证：{{user.IdCard}}</p>
+						<p>班主任：{{user.teacher}}</p>
+						<p>父母电话：{{user.parentPhone}}</p>
+						<p>个人介绍：{{user.introduction}}</p>
+				</div>
+				<div v-if="userFaceUpdate"  class="user-face-update">
+						<form v-for="user in userLists" method="post" action="sourcus/php/user.php" enctype="multipart/form-data">
+							<label v-on:click="changeFaces('paper')">
+								<input type="radio" name="photo">
+								<span>修改证件相</span>
+							</label>
+							<label v-on:click="changeFaces('face')">
+								<input type="radio" name="photo" checked>
+								<span>修改头像</span>
+							</label>
+							<ul class="user-face flex-box" >
+								<li class="flex-box paper" v-if="paperShow">
+									<p>
+										<img v-bind:src="user.photo" >
+									</p>
+									<strong>证件相</strong>
+									<input type="file" name="paperwork">
+								</li>
+								<li class="flex-box face" v-if="faceShow">
+									<p>
+										<img v-bind:src="user.face" >
+									</p>
+									<strong>头像</strong>
+									<input type="file" name="userface">
+								</li>
+							</ul>
+							<input type="hidden" name="uid" v-bind:value="user.id">
+							<button type="submit" name="user_face_sub">提交</button>
+						</form>
+				</div>
+				<div v-if="userMsgUpdate"  class="user-msg-update ">
+						<form v-for="user in userLists" method="post" action="sourcus/php/user.php">
+							<label>姓名：    <input type="text" name="userName" v-bind:value="user.name"></label>
+							<label>身高：    <input type="number" name="userHeight" v-bind:value="user.height"></label>
+							<label>邮箱：    <input type="email" name="userEmail" v-bind:value="user.username"></label>
+							<label>生日：    <input type="data" name="userBrith" v-bind:value="user.Birth"></label>
+							<label>班级：    <input type="text" name="userClass" v-bind:value="user.Class"></label>
+							<label>手机：    <input type="number" name="userPhone" v-bind:value="user.Phone"></label>
+							<label>qq：	     <input type="number" name="userQQ" v-bind:value="user.QQ"></label>
+							<label>地址：    <input type="text" name="userPlane" v-bind:value="user.address"></label>
+							<label>身份证：  <input type="number" name="userCard" v-bind:value="user.IdCard"></label>
+							<label>班主任：  <input type="text" name="userTeacher" v-bind:value="user.teacher"></label>
+							<label>父母电话：<input type="number" name="userParents" v-bind:value="user.parentPhone"></label>
+							<input type="hidden" name="uid" v-bind:value="user.id">
+							<label><span class="desripet">个人介绍：</span><textarea v-bind:value="user.introduction" name="userPresent"></textarea></label>
+							<button type="submit" name="user_update_sub">提交</button>
+						</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+
+<script>
+
+
+Vue.http.options.emulateJSON = true;
+
+
+var get_id = GetQueryString('uid'),
+	check_id = JSON.parse(localStorage.getItem('userMessage'));
+
+var userList = new Vue({
+	el:'#user-msg',
+	data:{
+		apiUrl:'sourcus/php/user.php',
+		userLists:[],
+		itemLists:[],
+		layout:'user-msg-edit',
+		paperShow:false,
+		faceShow:true,
+		userItemList:true,
+		userMsgData:false,
+		userFaceUpdate:false,
+		userMsgUpdate:false,
+		btnUserRoot:false,
+		uid:''
+	},
+	created(){
+		if(get_id==check_id.userId){
+			this.btnUserRoot=true;
+		}
+	    userListMsg={userListMsg:'userListMsg',id:get_id}
+		this.$http.post(this.apiUrl,userListMsg).then(function(data){
+
+	          data.body.forEach((obj,i)=>{
+	          	obj.face_url = obj.face_url!="" ? 'sourcus/Photo/face/'+obj.face_url : 'sourcus/Images/logo_v2.png';
+	          	obj.photo = obj.photo!="" ? 'sourcus/Photo/paperwork/'+obj.photo : 'sourcus/Images/logo_v2.png';
+	          	this.userLists.push({
+	          		id:obj.id,
+	          		name:obj.name,
+	          		height:obj.height,
+	          		username:obj.username,
+	          		Birth:obj.Birth,
+	          		Class:obj.Class,
+	          		Phone:obj.Phone,
+	          		QQ:obj.QQ,
+	          		address:obj.address,
+	          		IdCard:obj.IdCard,
+	          		teacher:obj.teacher,
+	          		parentPhone:obj.parentPhone,
+	          		introduction:obj.introduction,
+	          		face:obj.face_url,
+	          		photo:obj.photo
+	          	})
+	        })
+	    })
+		userListItem={userListItem:'userListItem',id:get_id}
+	    this.$http.post('sourcus/php/item.php',userListItem).then(function(data){
+	         data.body.forEach((obj,i)=>{
+	         	console.log(obj);
+	         	 this.itemLists.push({
+		         	item_url:obj.item_url+'?key='+obj.key,
+		         	item_name:obj.item_name,
+		         	item_hot:obj.item_hot,
+		         	item_photo:{
+		         		background:'url(sourcus/Photo/item/'+obj.item_photo+') center center / cover no-repeat'
+		         	}
+	         	 })
+	         })
+	    })
+	},
+	methods:{
+		changeFaces(msg){
+			var that = this;
+			switch(msg){
+				case 'paper': 
+					that.paperShow = true;
+					that.faceShow = false;
+				break;
+				case 'face': 
+					that.faceShow = true;
+					that.paperShow = false;
+				break;	
+				case 'msgEdit': 
+					that.userMsgUpdate=true;
+					that.userMsgData=false;
+					that.userItemList=false;
+					that.userFaceUpdate=false;
+				break;	
+				case 'faceEdit': 
+					that.userFaceUpdate=true;
+					that.userMsgData=false;
+					that.userItemList=false;
+					that.userMsgUpdate=false;
+				break;	
+				case 'umsg': 
+					that.userMsgData=true;
+					that.userItemList=false;
+					that.userFaceUpdate=false;
+					that.userMsgUpdate=false;
+				break;	
+				case 'item': 
+					that.userItemList=true;
+					that.userMsgData=false;
+					that.userFaceUpdate=false;
+					that.userMsgUpdate=false;
+				break;	
+			}
+		}
+	}
+})
+/*用户信息*/
+var userLogin = new Vue({
+    el:'#content',
+    data:{
+    	userName:'',
+    	userId:'',
+    	userFace:'',
+    	userRoot:'',
+		signId:'',
+		userUpdate:'',
+    	apiUrl:'sourcus/php/user.php'
+    },
+    created(){
+		var userLoginData={userData:'userGetData'}
+		this.$http.post(this.apiUrl,userLoginData).then(function(data){
+	        	if(data.body==1){
+	        		window.location.href='login.html';
+	        	}else{
+	        		
+	        		this.userName =data.body.userName;
+	        		this.userId =data.body.userId;
+	        		this.userRoot =data.body.userRoot;
+	        		this.signId =data.body.signId;
+	        		this.userUpdate = 'user.html?uid='+data.body.userId;
+	        		this.userFace={
+	        			background:'url('+data.body.userFace+') no-repeat center',
+	        			backgroundSize: '100% 100%'
+	        		}
+
+	        		var obj = JSON.stringify(data.body);
+	        		localStorage.setItem('userMessage',obj);
+
+	        	}
+	      	 
+
+	    })
+
+    }
+})
+
+
+
+
+
+
+
+
+
+
+
+
+</script>

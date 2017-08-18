@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>星辰平台</title>
+	<link rel="stylesheet" href="sourcus/Style/reset.css">
+	<link rel="stylesheet" href="sourcus/Style/style.css">
+	<link rel="stylesheet" href="sourcus/Style/main.css">
+	<script src="sourcus/Javascript/fun.js"></script>
+	<script src="sourcus/Javascript/vue.js"></script>
+	<script src="sourcus/Javascript/vue_resource.js"></script>
+</head>
+<body >
+	<div class="flex-box">
+		<header class="flex-box flex-direction">
+			<h1 class="box-sizing">
+				<a href="index.html"><img src="sourcus/Images/logo_v2.png" alt="logo"></a>
+			</h1>
+			<nav>
+				<ul>
+					<li><a href="index.html" title="首页"><span class="img1" icon-name="首页"></span></a></li>
+					<li><a href="userList.html" title="成员"><span class="img1" icon-name="成员"></span></a></li>
+					<li><a href="work.html" title="作品"><span class="img1" icon-name="作品"></span></a></li>
+					<li><a href="manage.html" title="管理"><span class="img1" icon-name="管理"></span></a></li>
+				</ul>
+			</nav>
+			<footer>
+				星辰工作室
+			</footer>
+		</header>
+		<div class="content">
+			<div id="content">
+				<div class="top flex-box" class="userData"> 
+					<div class="title">
+						<h2>星辰工作室-星辰平台</h2>
+						<p>我们都是浩瀚宇宙的小小星辰</p>
+					</div>
+					<form class="user_area flex-box" method="post" action="sourcus/php/login.php">
+						<span v-bind:style="userFace"></span>
+						<p>{{userName}}</p>
+						<a :href="userUpdate"></a>
+						<input type="hidden" name="usersignid" v-bind:value="signId">
+						<button type="submit" name="logout"></button>
+					</form>
+				</div>
+			</div>
+			<div class="main-content flex-box">
+				<section id="main" class="p0-55" v-cloak>
+					<h2>
+						项目管理
+					</h2>
+					<transition name="slide">
+					  	<section class="over" v-show="addshow">
+							<div class="additems">
+								<a class="closeAddItem" v-on:click="addshow = !addshow"></a>
+						  		<h3>修改项目</h3>
+						  		<form onsubmit="return false">
+									<label>
+										<span>项目名称：</span>
+										<input type="text" v-model="itemName" placeholder="item name">
+									</label>
+									<label>
+										<span>项目地址：</span>
+										<input type="text" v-model="itemUrl" placeholder="item url">
+									</label>
+									<label>
+										<span class="desripet">项目描述：</span>
+										<textarea v-model="itemDescription" placeholder="item description"></textarea>
+									</label>
+									<label>
+										<span class="desripet">项目图片：</span>
+										<input  type="file" v-on:change="onFileChange" v-show="!itemPhoto">
+										<img :src="itemPhoto" v-show="itemPhoto">
+									</label>
+									<button v-on:click="editItem">修改项目</button>
+						  		</form>
+							</div>
+					  	</section>
+					</transition>
+					<div  class="manage-item-list">
+						<table>
+								<thead>
+									<tr>
+										<th>图片</th>
+										<th>项目地址</th>
+										<th>项目名称</th>
+										<th>项目简介</th>
+										<th>操作</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr v-for="item in itemLists">
+										<td class="item-img list1" v-bind:style="item.itemImg"></td>
+										<td class="list2 ellipses">
+											{{item.item_url}}
+										</td>
+										<td class="list2 ellipses">
+											{{item.item_name}}
+										</td>
+										<td class="list2 ellipses">
+											{{item.item_description}}
+										</td>
+										<td  class="list2">
+											<button class="update" v-on:click="updateItem(item)">修改</button>
+											<button class="del" v-on:click="delItem(item)">删除</button>
+										</td>
+									</tr>
+									
+								</tbody>
+							</table>	
+					</div>
+				</section>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+<script>
+
+Vue.http.options.emulateJSON = true;
+var check_id = JSON.parse(localStorage.getItem('userMessage')).userId;
+/*Items list*/
+var itemList = new Vue({
+	el:'#main',
+	data:{
+		apiUrl:'sourcus/php/item.php',
+		itemLists:[],
+		itemName:'',
+		itemUrl:'',
+		itemDescription:'',
+		itemPhoto:'',
+		itemId:'',
+		itemImg:'',
+		addshow:false
+	},
+	created(){
+	    userListItem={userListItem:'userListItem',id:check_id}
+		this.$http.post(this.apiUrl,userListItem).then(function(data){
+				data.body.forEach((obj,i)=>{
+					this.itemLists.push({
+						item_url:obj.item_url,
+						item_name:obj.item_name,
+						item_description:obj.item_description,
+						id:obj.id,
+						delImgName:obj.item_photo,
+						itemImg:{
+							background:'url(sourcus/Photo/item/'+obj.item_photo+') center center / cover no-repeat'
+						}
+					})
+				})
+	    },function(response){
+	        console.info(response);
+	    })	    
+	},
+	methods:{
+		itemHotUpdate(msg){			
+			itemHotUpdateNum = {itemHotUpdate:msg}
+			this.$http.post(this.apiUrl,itemHotUpdateNum).then(function(data){
+				msg.itemHot = (msg.itemHot*1)+1
+		    },function(response){
+		        console.info(response);
+		    })
+		},
+		onFileChange(e){
+			var files = e.target.files || e.dataTransfer.files;
+			if (!files.length)
+			  return;
+			this.createImage(files[0]);
+		},
+		createImage(file) {
+		  var image = new Image();
+		  var reader = new FileReader();
+		  var vm = this;
+
+		  reader.onload = (e) => {
+		    vm.itemPhoto = e.target.result;
+		  };
+		  reader.readAsDataURL(file);
+		},
+		updateItem(msg){
+			this.addshow = true;
+			this.$http.get('sourcus/php/item.php?itemListM=0&itemId='+msg.id).then(function(el){
+				this.itemName = el.data.item_name;
+				this.itemUrl = el.data.item_url;
+				this.itemDescription = el.data.item_description;
+				this.itemPhoto ='sourcus/Photo/item/'+el.data.item_photo;
+				this.itemImg = el.data.item_photo;
+				this.itemId = el.data.id;
+		    })	    
+
+		},
+		editItem(){
+			editItem={
+				editItem:'editItem',
+				name:this.itemName,
+				url:this.itemUrl,
+				description:this.itemDescription,
+				photo:this.itemPhoto,
+				imgName:this.itemImg,
+				tid:this.itemId
+			}
+			this.$http.post(this.apiUrl,editItem).then(function(data){
+				window.location.href="manage.html";
+		    })
+
+		},
+		delItem(msg){
+			this.$http.get('sourcus/php/item.php?delId='+msg.id+'&img='+msg.delImgName).then(function(el){
+				window.location.href="manage.html";
+		    })	    
+		}
+
+	}
+})
+/*用户信息*/
+var userLogin = new Vue({
+    el:'#content',
+    data:{
+    	userName:'',
+    	userId:'',
+    	userFace:'',
+    	userRoot:'',
+		signId:'',
+		userUpdate:'',
+    	apiUrl:'sourcus/php/user.php'
+    },
+    created(){
+		var userLoginData={userData:'userGetData'}
+		this.$http.post(this.apiUrl,userLoginData).then(function(data){
+	        	if(data.body==1){
+	        		window.location.href='login.html';
+	        	}else{
+	        		
+	        		this.userName =data.body.userName;
+	        		this.userId =data.body.userId;
+	        		this.userRoot =data.body.userRoot;
+	        		this.signId =data.body.signId;
+	        		this.userUpdate = 'user.html?uid='+data.body.userId;
+	        		this.userFace={
+	        			background:'url('+data.body.userFace+') no-repeat center',
+	        			backgroundSize: '100% 100%'
+	        		}
+
+	        		var obj = JSON.stringify(data.body);
+	        		localStorage.setItem('userMessage',obj);
+
+	        	}
+	      	 
+
+	    })
+
+    }
+})
+
+
+
+
+
+
+
+
+</script>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>星辰平台</title>
+	<link rel="stylesheet" href="sourcus/Style/reset.css">
+	<link rel="stylesheet" href="sourcus/Style/style.css">
+	<link rel="stylesheet" href="sourcus/Style/main.css">
+	<script src="sourcus/Javascript/fun.js"></script>
+	<script src="sourcus/Javascript/vue.js"></script>
+	<script src="sourcus/Javascript/vue_resource.js"></script>
+</head>
+<body>
+	<div class="flex-box">
+		<header class="flex-box flex-direction">
+			<h1 class="box-sizing">
+				<a href="index.html"><img src="sourcus/Images/logo_v2.png" alt="logo"></a>
+			</h1>
+			<nav>
+				<ul>
+					<li><a href="index.html" title="首页"><span class="img1" icon-name="首页"></span></a></li>
+					<li><a href="userList.html" title="成员"><span class="img1" icon-name="成员"></span></a></li>
+					<li><a href="work.html" title="作品"><span class="img1" icon-name="作品"></span></a></li>
+					<li><a href="manage.html" title="管理"><span class="img1" icon-name="管理"></span></a></li>
+				</ul>
+			</nav>
+			<footer>
+				星辰工作室
+			</footer>
+		</header>
+		<div class="content">
+			<div id="content">
+				<div class="top flex-box" class="userData"> 
+					<div class="title">
+						<h2>星辰工作室-星辰平台</h2>
+						<p>我们都是浩瀚宇宙的小小星辰</p>
+					</div>
+					<form class="user_area flex-box" method="post" action="sourcus/php/login.php">
+						<span v-bind:style="userFace"></span>
+						<p>{{userName}}</p>
+						<a :href="userUpdate"></a>
+						<input type="hidden" name="usersignid" v-bind:value="signId">
+						<button type="submit" name="logout"></button>
+					</form>
+				</div>
+				<div class="banner">
+					<svg width="509.117" height="280">
+				                    <g class="g s1">
+				                        <rect x="199.6" y="22.8" transform="matrix(0.7071 -0.7071 0.7071 0.7071 19.5584 202.7818)" class="st t1" width="110" height="110"></rect>
+				                        <text transform="matrix(1 0 0 1 223.3085 88.3286)" class="st t1 text_b">恒 心</text>
+				                    </g>
+				                    <g class="g s2">
+				                        <rect x="111.2" y="111.2" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -68.8299 166.1701)" class="st t2" width="110" height="110"></rect>
+				                        <rect x="287.9" y="111.2" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -17.0532 291.1701)" class="st t2" width="110" height="110"></rect>
+				                        <text transform="matrix(1 0 0 1 141.3378 174.9592)" class="st t2 text_s">自 律</text>
+				                        <text transform="matrix(1 0 0 1 317.9472 174.9592)" class="st t2 text_s">完 美</text>
+				                    </g>
+				                    <g class="g s3">
+				                        <rect x="22.8" y="22.8" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -32.2183 77.7817)" class="st t3" width="110" height="110"></rect>
+				                        <rect x="376.3" y="22.8" transform="matrix(0.7071 -0.7071 0.7071 0.7071 71.3351 327.7817)" class="st t3" width="110" height="110"></rect>
+				                        <text transform="matrix(1 0 0 1 406.3355 86.5707)" class="st t3 text_s">追 求</text>
+				                        <text transform="matrix(1 0 0 1 52.7818 86.5706)" class="st t3 text_s">创 新</text>
+				                    </g>
+				     </svg>
+					<ul class="flex-box" class="userData">
+						<li class="flex-box flex-direction">
+							<span class="banner-item-icon ouline-icon"></span>
+							<p class="banner-item-title">在线时间</p>
+							<strong class="banner-item-time">{{onlineTime}}</strong>
+						</li>
+						<li class="flex-box flex-direction">
+							<span class="banner-item-icon sign-icon"></span>
+							<p class="banner-item-title">签到时间</p>
+							<strong class="banner-item-time">{{signTime}}</strong>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="main-content flex-box">
+				<div class="quotes">
+					<h2>每日一句</h2>
+					<form action="sourcus/php/user.php" method="post">
+						<input type="text" name="chinese" placeholder="中文" pattern="^[\u4E00-\u9FA5\s\W]+$">
+						<input type="text" name="english" placeholder="英语" pattern="^[a-zA-z\s\W]+$">
+						<button name="quotes_sub" type="submit">提交</button>
+					</form>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+<script>
+	Vue.http.options.emulateJSON = true;
+	/*用户信息*/
+	var userLogin = new Vue({
+	    el:'#content',
+	    data:{
+	    	userName:'',
+	    	userId:'',
+	    	userFace:'',
+	    	userRoot:'',
+			signId:'',
+			userUpdate:'',
+			onlineTime:'',
+			signTime:'',
+	    	apiUrl:'sourcus/php/user.php'
+	    },
+	    created(){
+			var userLoginData={userData:'userGetData'}
+			this.$http.post(this.apiUrl,userLoginData).then(function(data){
+		        	if(data.body==1){
+		        		window.location.href='login.html';
+		        	}else{
+		        		
+		        		this.userName =data.body.userName;
+		        		this.userId =data.body.userId;
+		        		this.userRoot =data.body.userRoot;
+		        		this.signId =data.body.signId;
+		        		this.userUpdate = 'user.html?uid='+data.body.userId;
+		        		this.userFace={
+		        			background:'url('+data.body.userFace+') no-repeat center',
+		        			backgroundSize: '100% 100%'
+		        		}
+		        		this.onlineTime = data.body.onlineTime;
+		        		this.signTime = data.body.signTime;
+
+		        		var obj = JSON.stringify(data.body);
+		        		localStorage.setItem('userMessage',obj);
+
+		        	}
+		      	 
+
+		    })
+
+	    }
+	})
+
+</script>

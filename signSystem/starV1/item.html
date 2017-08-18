@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>星辰平台</title>
+	<link rel="stylesheet" href="Style/reset.css">
+	<link rel="stylesheet" href="Style/base.css">
+	<link rel="stylesheet" href="Style/item.css">
+	<script src="Javascript/vue.js"></script>
+	<script src="Javascript/vue_resource.js"></script>
+</head>
+<body>
+<div id="wrap" v-cloak>
+	<header-area></header-area>
+	<section class="page">
+		<section class="m-content">
+			<div class="por">
+				<h3 class="m-h3-title">成员项目列表</h3>
+				<a href="javascript:;" class="m-add-icon" @click="itemPageShow"></a>
+			</div>
+			<ul class="clear item-data-wrap">
+				<li v-for="item in AitemData" :title="item.itemName">
+					<a :href="item.itemUrl"  @click="itemHotUpdate(item)">
+						<p class="m-item-img">
+							<img :src="item.itemPhoto" :alt="item.itemAuthor">
+							<span class="m-item-face">
+								<img :src="item.itemAuthorFace" :alt="item.itemName">
+							</span>
+						</p>
+						<h4 class="m-item-title text-space">{{item.itemName}}</h4>
+						<span class="m-item-text text-space" :title="item.itemDescription">{{item.itemDescription}}</span>
+						<span class="m-item-hot">{{item.itemHot}}</span>
+						<span class="m-item-hot-icon"></span>
+					</a>
+				</li>
+			</ul>
+		</section>
+	</section>
+	<!-- 项目编辑窗口 -->
+		<section class="item-edit-area" v-if="itemEditShow">
+			<div class="item-main por">
+				<header class="i-main-title por">
+					<h4>添加项目</h4>
+					<a href="javascript:;" class="i-close" @click="itemPageHide">X</a>
+				</header>
+				<form enctype="multipart/form-data" method="post" action="php/item.php">
+					<label class="i-main-photo">
+						<div class="i-m-p-radius">
+							<img :src="image" alt="">
+						</div>
+						<input type="file" @change="onFileChange" name="file">
+						<span>添加你的项目图片</span>
+					</label>
+					<div class="i-main-form">
+						<label>
+							<span>项目名称：</span>
+							<input type="text" placeholder="项目名称" name="itemName">
+						</label>
+						<label>
+							<span>项目地址：</span>
+							<input type="text" placeholder="项目URl" name="itemPlane">
+						</label>
+						<label>
+							<span>项目描述：</span>
+							<textarea placeholder="项目描述（选填）" name="itemDescription"></textarea>
+						</label>
+						<button name="addItem">确认</button>
+					</div>
+				</form>
+			</div>
+		</section>
+</div>
+<script src="Javascript/basePage.js"></script>
+<script>
+new Vue({
+	el:'#wrap',
+	data:{
+		itemUrl:'php/item.php',
+		AitemData:[],
+		itemEditShow:false,
+		image:'',
+		itemName:'',
+		itemPlane:'',
+		itemDescription:'',
+	},
+	created(){
+		/*获取项目列表信息*/
+		itemAuthorUser={itemAuthorUser:'itemAuthorUser',main:0}
+		this.$http.post(this.itemUrl,itemAuthorUser).then(function(data){
+			data.body.forEach((el,i)=>{
+				el.itemUrl=el.itemUrl+"?key="+el.key;
+				el.itemPhoto = 'Photo/item/'+el.itemPhoto;
+				el.itemAuthorFace = el.itemAuthorFace!="" ? 'Photo/face/'+el.itemAuthorFace : 'Images/logo.png';
+				el.itemDescription = el.itemDescription!="" ? el.itemDescription : '暂无描述';
+			})
+			// console.log(data.body);
+			this.AitemData = data.body;//导入项目数据
+			this.AitemData.sort((a,b)=>{
+				return b.itemHot-a.itemHot;
+			})
+	    })
+	},
+	methods:{
+		/*热点增加*/
+		itemHotUpdate(msg){
+			itemHotUpdateNum = {itemHotUpdate:msg}
+			this.$http.post(this.itemUrl,itemHotUpdateNum).then(function(data){
+				msg.itemHot = (msg.itemHot*1)+1
+		    })
+		},
+		itemPageShow(){this.itemEditShow=true},
+		itemPageHide(){this.itemEditShow=false},
+		onFileChange(e) {//上传项目图片
+	      var files = e.target.files || e.dataTransfer.files;
+	      if (!files.length)
+	        return;
+	      this.createImage(files[0]);
+	    },
+		createImage(file) {//将上传图片转为base64格式
+			var image = new Image();
+			var reader = new FileReader();
+			reader.onload = (e) => {
+				this.image = e.target.result;
+			};
+			reader.readAsDataURL(file);
+		},
+	}
+})
+</script>

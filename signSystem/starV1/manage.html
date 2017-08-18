@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>星辰平台</title>
+	<link rel="stylesheet" href="Style/reset.css">
+	<link rel="stylesheet" href="Style/base.css">
+	<link rel="stylesheet" href="Style/manage.css">
+	<script src="Javascript/vue.js"></script>
+	<script src="Javascript/vue_resource.js"></script>
+	<script src="Javascript/echarts.js"></script>
+</head>
+<body>
+<div id="wrap" v-cloak>
+	<header-area></header-area>
+	<section class="page">
+		<div class="manage">
+			<div class="manage-title">
+				<h3>成员项目管理</h3>
+			</div>
+			<div class="manage-data-wrap">
+				<table>
+					<tr>
+						<th class="i-img">项目图片</th>
+						<th>项目地址</th>
+						<th>项目名称</th>
+						<th>项目简介</th>
+						<th>操作</th>
+					</tr>
+					<tr v-for="item in manageData">
+						<td class="i-img por"><img :src="item.item_photo" :alt="item.item_name"></td>
+						<td>{{item.item_url}}</td>
+						<td>{{item.item_name}}</td>
+						<td>{{item.item_description}}</td>
+						<td class="i-btn">
+							<a href="javascript:;" @click="modifyMagnge(item)">修改</a>
+							<a href="javascript:;" @click="mdel(item)">删除</a>
+						</td>
+					</tr>
+				</table>
+				<div class="noitem" v-if="manageData.length==0">你没有项目上传</div>
+			</div>
+		</div>
+	</section>
+	<!-- 删除项目 -->
+	<section class="manage-del" v-if="mshow">
+		<div class="clear">
+			<h3>是否删除项目</h3>
+			<p>{{mdelname}}</p>
+			<ul>
+				<li><a href="javascript:;" @click="mdelTrue">确认</a></li>
+				<li><a href="javascript:;" @click="mdelFalse">取消</a></li>
+			</ul>
+		</div>
+	</section>
+	<!-- 修改项目 -->
+	<section class="item-edit-area" v-if="itemEditShow">
+		<div class="item-main por">
+			<header class="i-main-title por">
+				<h4>添加项目</h4>
+				<a href="javascript:;" class="i-close" @click="itemPageHide">X</a>
+			</header>
+			<form enctype="multipart/form-data" method="post" action="php/item.php">
+				<label class="i-main-photo">
+					<div class="i-m-p-radius">
+						<img :src="image" alt="">
+					</div>
+					<input type="file" @change="onFileChange" name="file">
+					<span>添加你的项目图片</span>
+				</label>
+				<div class="i-main-form">
+					<label>
+						<span>项目名称：</span>
+						<input type="text" placeholder="项目名称" :value="itemName" name="itemName">
+						<input type="hidden" :value="itemId" name="tid">
+					</label>
+					<label>
+						<span>项目地址：</span>
+						<input type="text" placeholder="项目URl" :value="itemPlane" name="itemPlane">
+					</label>
+					<label>
+						<span>项目描述：</span>
+						<textarea placeholder="项目描述（选填" :value="itemDescription" name="itemDescription"></textarea>
+					</label>
+					<button name="editItem">确认</button>
+				</div>
+			</form>
+		</div>
+	</section>
+</div>
+
+</body>
+</html>
+<script src="Javascript/basePage.js"></script>
+<script>
+var check_id = JSON.parse(localStorage.getItem('userMessage'));
+	new Vue({
+		el:'#wrap',
+		data:{
+			itemUrl:'php/item.php',
+			manageData:[],
+			mshow:false,
+			itemEditShow:false,
+			image:'',
+			mdelname:'',
+			mdelid:'',
+			mdelimg:'',
+			itemName:'',
+			itemId:'',
+			itemPlane:'',
+			itemDescription:'',
+		},
+		created(){
+			userListItem={userListItem:'userListItem',id:check_id.userId}
+			this.$http.post(this.itemUrl,userListItem).then(function(data){
+				if(data.body!=""){
+					data.body.forEach((el,i)=>{
+						el.item_photo = 'Photo/item/'+el.item_photo;
+						el.item_description = el.item_description!="" ? el.item_description : "暂无描述" ;
+					})
+					this.manageData = data.body;
+					this.manageData.sort((a,b)=>{return b.item_hot-a.item_hot;})//按热度高低排序
+				}
+			})
+		},
+		methods:{
+			mdel(data){
+				// console.log(data);
+				this.mdelname = data.item_name;
+				this.mdelid = data.id;
+				this.mshow = true;
+			},
+			mdelTrue(){
+				if(this.mdelid!=""){
+					itemDel={userManageDel:"",delid:this.mdelid}
+					this.$http.post(this.itemUrl,itemDel).then(function(data){
+						window.location.href='manage.html';
+					})
+				}
+			},
+			mdelFalse(){
+				this.mdelname = '';
+				this.mshow=false;
+			},
+			modifyMagnge(data){
+				this.itemEditShow = true;
+				this.image = data.item_photo;
+				this.itemName = data.item_name;
+				this.itemId = data.id;
+				this.itemPlane = data.item_url;
+				this.itemDescription = data.item_description;
+			},
+			itemPageHide(){this.itemEditShow = false;},
+			onFileChange(e) {//上传项目图片
+		      var files = e.target.files || e.dataTransfer.files;
+		      if (!files.length)
+		        return;
+		      this.createImage(files[0]);
+		    },
+			createImage(file) {//将上传图片转为base64格式
+				var image = new Image();
+				var reader = new FileReader();
+				reader.onload = (e) => {
+					this.image = e.target.result;
+				};
+				reader.readAsDataURL(file);
+			},
+		}
+	})
+</script>

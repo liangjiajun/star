@@ -1,0 +1,228 @@
+
+
+.main{
+	position: absolute;
+	left: 140px;
+	top: var(--top-height);
+	width: var(--main-width);
+	background: #eee;
+}
+
+.m-banner{
+	min-height: var(--banner-height);
+	position: relative;
+	overflow: hidden;
+	background: url(../Images/banner_bg.jpg) center/100% 100% no-repeat;
+}
+.m-banner svg{
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 2;
+    transform: translate(100%,-20%) scale(0.5,0.5);
+}
+.st{ fill:#FFFFFF;}
+.t1{ opacity:0.6;}
+.t2{ opacity:0.5;}
+.t3{ opacity:0.4;}
+.text_b{font-size:25px; text-shadow:2px 2px 0 #000;}
+.text_s{font-size:20px; text-shadow:2px 2px 0 #000;}
+.g{ opacity:0; transition:all 2s;}
+.s1.g{ animation:s1 1s linear forwards; }
+.s2.g{ animation:s2 1s linear 0.5s forwards;transform:translateY(40px); }
+.s3.g{ animation:s1 1s linear 1s forwards;}
+@keyframes s1{100%{ opacity:1; transform:translateY(10px);}}
+@keyframes s2{100%{ opacity:1; transform:translateY(10px);}}
+
+
+.m-u-sign{
+	position: absolute;
+	right: 0;
+	width: 361px;
+	min-height: var(--banner-height);
+}
+.m-u-sign li{
+	width: 50%;
+	margin: 0;
+	height:var(--banner-height);
+	float: left;
+	background: rgba(255,0,0,.5);
+	text-align: center;
+	color: #fff;
+}
+.m-u-sign li:last-child{
+	background: rgba(0,209,153,.5);
+}
+.m-u-sign li span{
+	display: block;
+}
+.m-u-s-icon{
+	width: 40px;
+	height: 40px;
+	background: url(../Images/online_time_icon.png) center/100% 100% no-repeat;
+	margin: 15px auto 30px;
+}
+.icon-sign{
+	background: url(../Images/sign_icon_1.png) center/100% 100% no-repeat;
+}
+.m-u-s-time{
+	margin-top: 15px;
+	font-weight: bold;
+}
+
+
+.item-data-wrap{
+	height: calc(100vh - 362px);
+	overflow-y: scroll;
+}
+.m-content{
+	float: left;
+	width: calc(100% - 361px);
+	padding:0 var(--padding-loca);
+}
+
+.m-content ul{
+	margin-right: -40px;
+}
+.m-content ul li:hover{
+	box-shadow: 0 0 50px rgba(0,0,0,.2);
+}
+.m-content ul li{
+	width: 280px;
+	height: 255px;
+	background: #fff;
+	border-radius: 5px;
+	position: relative;
+	float: left;
+	margin: 0 40px 40px 0;
+	transition: all .5s;
+	box-shadow: 2px 0 1px rgba(0,0,0,.1);
+}
+.m-item-img{
+	width: 100%;
+	height: 160px;
+	border-radius: 5px 5px 0 0;
+	display: block;
+	overflow: hidden;
+	position: relative;
+}
+.m-item-img img{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	display: block;
+}
+.m-item-face{
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background: #fff;
+	padding: 5px;
+	display: block;
+	position: absolute;
+	right: 15px;
+	top: 15px;
+	overflow: hidden;
+}
+.m-item-hot{
+	font-size: 16px;
+	position: absolute;
+	right: 25px;
+	bottom: 40px;
+	color:var(--base-color);
+}
+.m-item-hot-icon{
+	position: absolute;
+	right: 65px;
+	bottom: 38px;
+	background: url(../Images/hot1.png) center/100% no-repeat;
+	width: 20px;
+	height: 20px;
+	overflow: hidden;
+}
+.m-item-title{
+	padding: 28px 20px 0;
+	font-size: 18px;
+	font-weight: bold;
+	color:#787878;
+}
+.m-item-text{
+	padding: 10px 20px 0;
+	display: block;
+	font-size: 16px;
+	color: #b4b4b4;
+}
+.m-add-icon{
+	width: 30px;
+	height: 30px;
+	display: block;
+	position: absolute;
+	top: 30px;
+	right: 30px;
+	background: url(../Images/add.png) center center/100% 100% no-repeat;
+}
+
+
+
+
+/* 用户列表 */
+.u-user-list{
+	width: 361px;
+	float: right;
+	background: #fff;
+}
+.u-user-list h3{
+	padding-left: var(--padding-loca);
+}
+.u-user-list ul{
+	height: calc(100vh - 362px);
+	padding-top: 2px;
+	overflow-y: scroll;
+}
+.u-user-list li{
+	line-height: 70px;
+	font-size: 18px;
+	border-bottom: 1px solid  rgba(212,212,212,.3);
+	transition: all .5s;
+}
+.u-user-list li:hover{
+	box-shadow: 0 0 10px rgba(0,0,0,.2);
+}
+.u-user-list li a{
+	display: block;
+	padding: 0 60px;
+	color: #9e9e9e;
+}
+.u-user-list li a span{
+	display: inline-block;
+}
+.u-user-face{
+	top: 15px;
+	width: 40px;
+	height: 40px;
+	display: block;
+	overflow: hidden;
+	background: #fff;
+	border-radius: 50%;
+	margin-right: 20px;
+	box-shadow: 0 0 5px rgba(0,0,0,.2);
+}
+.u-user-face img{
+	position: absolute;
+	width: 100%;
+}
+
+.u-user-role{
+	width: 15px;
+	height: 15px;
+	display: block;
+	border-radius: 50%;
+	position: absolute;
+	top:35px;
+	right:50px;
+}
+[name="role3"]{background: #fffa2d;}
+[name="role2"]{background: #c0c0c0;}
+[name="role1"]{background: #B87333;}
+

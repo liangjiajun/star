@@ -1,0 +1,49 @@
+/*通用样式设置*/
+*{margin: 0px;padding: 0px;list-style: none}
+a{color: #000;text-decoration: none!important;}
+body{background: #eee;font-family:'Microsoft YaHei' ;}
+h3{border-bottom: 1px solid #e6e6e6;font-size: 16px;margin-top: 0;padding: 12px 0 11px 10px;font-weight: bold;margin-bottom: 0px;}
+
+/*头部*/
+header{background: #333;width: 100%;height: 48px;}
+
+/*容器*/
+.wrap{width: 1200px;margin: 0 auto;}
+
+/*logo区域*/
+section{height: 118px;}
+										/*logo区域*/
+.area_logo{padding-top: 40px ;float: left;width: 50%;}
+.area_logo img{float: left;}
+h1{font-size: 30px;margin-top: 10px;}
+										/*搜索区域*/
+.area_search{float: right;padding-top: 48px;}
+.form-control{width: 300px;}
+.search_input{display: inline!important;height: 39px;}
+.search_button{background: #3671a3;color: #fff;width: 65px;height: 38px;border:none;}
+.search_button:hover{background: #2d5f8a;color: #fff}
+.search_button:active{background-color: #254d70!important;color: #fff!important}
+
+/*左侧成员列表*/
+article{width: 250px;background: #fff;border:1px solid #e6e6e6;float: left;}
+
+.user_group{padding: 0 10px;}
+.user_group li{font-size: 14px;}
+.panel-span{float: right;}
+.panel-body li{float: left;border-radius: 50%;width: 30px;height: 30px;background-color: #2a5193;margin:10px 12px;text-align: center;line-height: 30px;}
+.work_none{font-size: 40px;text-align: center;line-height: 300%;color: #d0d0d0;}
+.list_user{margin: 0 5px;}
+
+
+#datetimepicker{border-radius: 2px;border:1px solid #ddd;}
+#datetimepicker:focus{border-color: #66afe9;box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);}
+
+#datetimepicker1{border-radius: 2px;border:1px solid #ddd;}
+#datetimepicker1:focus{border-color: #66afe9;box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);}
+
+
+
+
+
+
+

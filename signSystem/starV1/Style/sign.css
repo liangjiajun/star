@@ -1,0 +1,167 @@
+body{
+	background: #e9ecf1;
+	--red-color:rgba(255,0,0,.6);
+}
+.page{
+	position: absolute;
+	left: 140px;
+	top: 120px;
+	padding: 30px 30px 0 30px;
+	width: var(--main-width);
+}
+
+
+.sign{
+	width:100%;
+	box-shadow: 0px 0px 10px rgba(0,0,0,.2);
+	background: #fff;
+}
+.sign-title{
+	height: 110px;
+	line-height: 110px;
+}
+.sign-date-btn{
+	float: left;
+	color: var(--font-color);
+}
+.sign-title h3{
+	color: var(--base-color);
+	text-indent: 2em;
+}
+.sign-date-btn{
+	position: absolute;
+	left: 0;
+	right: 0;
+	top:30px;
+	bottom: 0;
+	margin: auto;
+	text-align: center;
+	font-size: 30px;
+}
+.sign-data-description{
+	float: right;
+	text-align: right;
+}
+.s-btn{
+	font-size: 24px;
+	font-family: var(--font-family);
+	cursor: pointer;
+}
+.sign-data-description span{
+	padding: 5px 10px;
+	border-radius: 3px;
+	color: #fff;
+	margin: 0 15px;
+	opacity: .8;
+	background: var(--base-color);
+}
+
+table{
+	width: 100%;
+	position: relative;
+	color: var(--font-color);
+}
+.sign-data-wrap{
+	width: 100%;
+	height: 705px;
+	overflow-y: scroll;
+
+}
+.sign-user{
+	text-align: center;
+	vertical-align: middle;
+}
+.s-table-heade{
+	line-height: 60px;
+}
+.s-table-heade th{
+	background: #fafafa;
+}
+
+.sign-icon:after{
+	content: "";
+	position: absolute;
+	top: 10px;
+	left: 50px;
+	width: 40px;
+	height: 40px;
+	display: block;
+	background: url(../Images/sign-time.png) center/cover no-repeat;
+}
+
+.s-table-heade th,tr td{
+	border: 1px solid #dedede;
+}
+tr td{
+	padding: 5px;
+}
+tr td span{
+	padding:5px 0;
+	display: block;
+	background: #fff;
+	border-radius: 5px;
+	transition: all .5s ease-out;
+}
+
+tr td span:hover{
+	cursor: default;
+	box-shadow: 0 0 30px rgba(28,220,211,.5);
+	transition: all .5s ease-out;
+}
+tr td strong{
+	line-height: 25px;
+	display: block;
+	text-align: center;
+	position: relative;
+}
+tr td strong:empty:before{
+	background: none;
+}
+tr td strong:before{
+	content: "";
+	width: 15px;
+	height: 15px;
+	display: block;
+	position: absolute;
+	top: 7px;
+	left: 45px;
+	background: url(../Images/up.png) center/100% 100% no-repeat;
+}
+
+tr td strong:last-child:empty:before{
+	background: none;
+}
+tr td strong:last-child:before{
+	background: url(../Images/down.png) center/100% 100% no-repeat;
+}
+[name*="data"]:after{
+	position: absolute;
+	right: 8px;
+	bottom: 0;
+}
+[name="data-late"]:after{
+	content: "迟到";
+	color: var(--red-color);
+
+}
+[name="data-absent"]:after{
+	content: "未签退";
+	color: var(--red-color);
+}
+[name="data-early"]:after{
+	content: "早退";
+	color: var(--red-color);
+}
+[name="data-leave"]:after{
+	content: "请假";
+	color: var(--red-color);
+}
+[name="data-holiday"]:after{
+	content: "假日";
+	color: var(--red-color);
+}
+
+
+
+
+

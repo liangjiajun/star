@@ -1,0 +1,678 @@
+*{margin:0;padding:0;}
+
+ul li{list-style: none;}
+
+body{font-family:'微软雅黑';font-size:14px;}
+
+.clear{clear: both;}
+
+
+
+
+
+.copyright{height: 20px;text-align: center;margin-top: 15px;}
+
+
+
+.navleft{float: left;}
+
+.navleft a{display: inline-block;height: 50px;line-height: 50px;color: #9d9d9d;text-decoration: none;
+
+	padding:0 10px;cursor: pointer;}
+
+.navleft a:hover{background-color: #000;color:#fff;}
+
+.navbar-inverse{border-radius: 0;}
+
+.logo{width:250px;}
+
+.page-header,.cont{width: 80%;margin:0 10%;position:relative;}
+
+.bg{height: 80px;border-top: 1px solid #eee;margin:0 auto;}
+
+.page-header small{padding-top: 50px;display: inline-block;}
+
+.left{ width: 20%;float:left;}
+
+.list-group-item{border:0px;border-bottom:1px solid #eee;border-top:1px solid #eee;padding: 0;}
+
+.list-group-item a{text-decoration: none;}
+
+.displayblock{display: block;padding: 15px;padding-left: 20%;}
+
+
+
+
+
+.right{width: 80%;float:right;border-left: 1px solid #eee;border-right: 1px solid #eee;}
+
+.table *{text-align: center;}
+
+.table{margin-bottom: 0;}
+
+.table tr{height: 50px;line-height: 40px;}
+
+.table th:nth-child(1){width:20%;}
+
+.table th:nth-child(2){width:50%;}
+
+.table th:nth-child(3) {width:20%;}
+
+.table th:nth-child(4) {width:10%;}
+
+
+
+
+
+.shangchuang{position: absolute;bottom:15px;right:20px;}
+
+.Calendar{position: absolute;left: 20px;bottom:16px;width: 500px;}
+
+	.Calendar .Wdate{height: 25px;}
+
+.fuzzy{position: absolute;right: 0px;bottom:5px;width: 500px;}
+
+	.form-control{display:inline;width: 54%;}
+
+	.btn .btn-default{float: left;display: inline-block;}
+
+.pagemenu{position: absolute;right: 400px;bottom:5px;width: 500px;}
+
+	.pagemenu li{float:left;margin:0 10px;}
+
+	.pagemenu li a{display: block;}
+
+.thispage{position: absolute;left: 710px;top: 29px;width:45px;height: 34px;border-radius: 3px;border-color: #ccc;}
+
+
+
+
+
+
+/* 作业按钮 */
+
+
+
+.form{
+
+float: right;
+
+height: 40px;
+
+}
+
+.form button a{
+
+    display: inline-block;
+
+    height: 40px;
+
+    line-height: 40px;
+
+    padding: 0 10px;
+
+    color: #9d9d9d;
+
+    background-color: #222;
+
+}
+
+.search_text{
+
+    width: 200px;
+
+    height: 30px;
+
+    line-height: 30px;
+
+    text-indent: 10px;
+
+    border-radius: 5px;
+
+    outline: none;
+
+}
+
+
+
+/* 作业按钮 */
+
+/*login页面*/
+
+#login a{
+
+	text-decoration: none;
+
+}
+
+#login #wrap{
+
+	background:url(../img/bg3.jpg);
+
+	background-size:100% 100%;
+
+	position:absolute;
+
+	width:100%;
+
+	height:100%;
+
+}
+
+#login .center-block{
+
+  width:400px;
+
+  margin:10% auto;
+
+}
+
+#login .loginh1{
+
+	margin-left: -50px;
+
+	margin-bottom: 40px;
+
+}
+
+#login .loginh1 a{
+
+	color:#337ab7;
+
+}
+
+#login .loginspan{
+
+	color:#FBFBFB;
+
+	font-size:18px;
+
+	margin-right:20px;
+
+}
+
+#login .loginwidth{
+
+	width: 250px;
+
+    height: 40px;
+
+    padding:10px;
+
+    margin-bottom: 30px;
+
+}
+
+#login .loginbtn{
+
+	width: 250px;
+
+    height: 40px;
+
+    margin-left: 62px;
+
+    margin-bottom: 30px;
+
+}
+
+#login .loginbottom{
+
+	width: 250px;
+
+	height: 40px;
+
+	margin-left: 62px;
+
+}
+
+#login .lbleft{
+
+	float:left;
+
+	color:#FBFBFB;
+
+	font-size:16px;
+
+}
+
+#login .lbright{
+
+	float:right;
+
+	color:#FBFBFB;
+
+	font-size:16px;
+
+}
+
+#login a{
+
+	color:#FBFBFB;
+
+}
+
+#login a:hover{
+
+	color:#337ab7;
+
+}
+
+#login .err{
+
+	color:red;
+
+}
+
+/*login页面*/
+
+
+
+/*reg页面*/
+
+#reg a{text-decoration: none;}
+
+#reg #wrap{
+
+	background:url(../img/bg3.jpg);
+
+	background-size:100% 100%;
+
+	position:absolute;
+
+	width:100%;
+
+	height:100%;
+
+}
+
+#reg .center-block {
+
+  width:400px;
+
+  margin:10% auto;
+
+}
+
+#reg .form-horizontal{
+
+	width: 600px;
+
+}
+
+#reg .loginh1{
+
+	margin-bottom: 40px;
+
+}
+
+#reg .loginh1 a{
+
+	color:#337ab7;
+
+}
+
+#reg .loginspan{
+
+	color:#FBFBFB;
+
+	font-size:18px;
+
+	margin-right:20px;
+
+}
+
+#reg .loginspan:nth-of-type(5){
+
+	margin-left: -36px;
+
+}
+
+#reg .loginspan:nth-of-type(7){
+
+	margin-left: -18px;
+
+}
+
+#reg .loginwidth{
+
+	width: 250px;
+
+    height: 40px;
+
+    padding:10px;
+
+    margin-bottom: 30px;
+
+}
+
+#reg .loginbtn{
+
+	width: 250px;
+
+    height: 40px;
+
+    margin-left: 62px;
+
+    margin-bottom: 30px;
+
+    display: inline-block;
+
+}
+
+#reg .loginbottom{
+
+	width: 250px;
+
+	height: 40px;
+
+	margin-left: 62px;
+
+}
+
+#reg .lbleft{
+
+	float:left;
+
+	color:#FBFBFB;
+
+	font-size:16px;
+
+}
+
+#reg .lbright{
+
+	float:right;
+
+	color:#FBFBFB;
+
+	font-size:16px;
+
+}
+
+#reg a{
+
+	color:#FBFBFB;
+
+}
+
+#reg a:hover{
+
+	color:#337ab7;
+
+}
+
+#reg .yzm{
+
+	width: 250px;
+
+	height: 40px;
+
+	margin-left: 65px;
+
+	line-height: 40px;
+
+	font-size: 16px;
+
+}
+
+#reg #code{
+
+	width: 100px;
+
+	margin-right: 25px;
+
+}
+
+#reg .err{
+
+	color:red;
+
+}
+
+/*reg页面*/
+
+/*upload下载页面*/
+
+#upload .blur{
+
+	background:url(../img/bg3.jpg);
+
+	background-size:100% 100%;
+
+	position:absolute;
+
+	width:100%;
+
+	height:100%;
+
+}
+
+#upload #wrap{
+
+	width:500px;
+
+	height:380px;
+
+	margin:200px auto;
+
+	background:rgba(0,0,0,0.3);	
+
+	padding:20px;
+
+	border-radius:20px;
+
+	position: relative;
+
+}
+
+#upload .title1{
+
+	color:#759AB6;	
+
+	margin:10px 0;
+
+}
+
+#upload .title4{
+
+	color:#fff;
+
+	position: absolute;
+
+	left:20px;
+
+	top:30%;
+
+	font-size: 16px;	
+
+}
+
+#upload .slelct{
+
+	height:40px;
+
+	width:100px;
+
+	position: absolute;
+
+	left:20px;
+
+	top:40%;	
+
+}
+
+#upload  .input{
+
+	width:300px;
+
+	height:40px;
+
+}
+
+#upload  .inputt{
+
+	position: absolute;
+
+	right:20px;
+
+	top:30%;
+
+	border-radius: 4px;
+
+	text-align: center;
+
+}
+
+#upload  .inputf{
+
+	position: absolute;
+
+	right:20px;
+
+	top:50%;
+
+	
+
+}
+
+#upload  .inputs{
+
+	position: absolute;
+
+	right:20px;
+
+	top:70%;
+
+	font-size: 16px;
+
+}
+
+#upload  .err{
+
+	color:red;
+
+	position: absolute;
+
+	right:-32%;
+
+	top:32%;
+
+}
+
+#upload  .err1{
+
+	color:red;
+
+	position: absolute;
+
+	right:-32%;
+
+	top:72%;
+
+}
+
+#upload .aindex{
+
+	font-size: 20px;
+
+	text-decoration: none;
+
+}
+
+
+
+/* 点击选择文件的替代样式 */
+
+#upload #file{
+
+	position: relative;
+
+	  left: 160px;
+
+	  bottom: -66px;
+
+	  z-index: 2;
+
+	  width: 300px;
+
+	  background-color: #ccc;
+
+	  opacity: 0;
+
+	  height: 40px
+
+}	
+
+/*upload下载页面*/
+
+/*fuzzy文本段搜索页面*/
+
+#fuzzy .form-group{
+
+	position: relative;
+
+}
+
+#fuzzy .err{
+
+	color:red;
+
+	position: absolute;
+
+	left:2px;
+
+	bottom:-20px;
+
+}
+
+
+
+/*fuzzy文本段搜索页面*/
+
+
+
+/*calendar时间搜索页面*/
+
+#calendar .err{
+
+	color:red;
+
+	position: absolute;
+
+	right:-80px;
+
+	bottom:5px;
+
+}
+
+
+
+/*calendar时间搜索页面*/
+
+
+
+/*personal个人资料页面*/
+
+#personal .navbar{
+
+	margin-bottom: 0;
+
+}
+
+#personal .head-portrait{
+
+	
+
+}
+
+/*personal个人资料页面*/
+
+
+
+/*自定义图标*/
+table a[href$='php']:after{ content: '代码'; width: 80px; display: inline-block;}
+table a[href$='jpg']:after{ content: '图片'; width: 80px; display: inline-block;}
+table a[href$='png']:after{ content: '图片'; width: 80px; display: inline-block;}
+table a[href$='psd']:after{ content: 'PSD'; width: 80px; display: inline-block;}
+table a[href$='zip']:after{ content: '压缩包'; width: 80px; display: inline-block;}
+table a[href$='rar']:after{ content: '压缩包'; width: 80px; display: inline-block;}

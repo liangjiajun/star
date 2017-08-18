@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>星辰平台</title>
+	<link rel="stylesheet" href="Style/reset.css">
+	<link rel="stylesheet" href="Style/base.css">
+	<link rel="stylesheet" href="Style/user.css">
+	<script src="Javascript/vue.js"></script>
+	<script src="Javascript/vue_resource.js"></script>
+</head>
+<body>
+<div id="wrap" v-cloak>
+	<header-area></header-area>
+	<section class="page">
+			<section class="user-message" v-for="user in userData">
+				<div class="user-m-face">
+					<div class="u-m-f por">
+						<img :src="user.face_url" :alt="user.name">
+					</div>
+					<button v-if="modifyUserData"  @click="modifyUserDataShow">修改信息</button>
+				</div>
+				<div class="user-m-content" >
+					<h4>{{user.name}}</h4>
+					<p class="user-active">{{user.type}}</p>
+					<p>邮箱：{{user.username}}</p>
+					<p>电话：{{user.Phone}}</p>
+					<ul class="u-m-bottom-sign">
+						<li>
+							<span>签到天数</span>
+							<strong>{{user.signTotal}}天</strong>
+						</li>
+						<li>
+							<span>项目数量</span>
+							<strong>{{user.itemTotal}}个</strong>
+						</li>
+						<li>
+							<span>总时长</span>
+							<strong class="u-m-day">{{user.day}}</strong>
+						</li>
+					</ul>
+				</div>
+			</section>
+			<aside>
+				<h3>项目列表</h3>
+				<ul v-if="itemData.length!=0">
+					<li v-for="item in itemData">
+						<a :href="item.item_url">
+							<p class="m-item-img">
+								<img :src="item.item_photo" :alt="item.item_name">
+							</p>
+							<h4 class="m-item-title text-space">{{item.item_name}}</h4>
+							<span class="m-item-text text-space">{{item.item_description}}</span>
+						</a>
+					</li>
+				</ul>
+				<div class="item-empty" v-if="itemData.length==0">
+					此人暂无项目上传
+				</div>
+			</aside>
+			<section class="item-edit-area" v-if="userModifyPage">
+				<div class="item-main por">
+					<header class="i-main-title por">
+						<h4>修改信息</h4>
+						<a href="javascript:;" class="i-close" @click="modifyUserDataHide">X</a>
+					</header>
+					<form onsubmit="return false" v-for="user in userData">
+						<label class="i-main-photo">
+							<div class="i-m-p-radius">
+								<img :src="image" :alt="user.name">
+							</div>
+							<input type="file" @change="onFileChange">
+							<span>修改头像</span>
+						</label>
+						<div class="i-main-form">
+							<label>
+								<span>邮箱：</span>
+								<input type="email"  v-model="userEmail">
+							</label>
+							<label>
+								<span>电话：</span>
+								<input type="phone" v-model="userPhone">
+							</label>
+							<button @click="userEditSub">{{userSubActive}}</button>
+						</div>
+					</form>
+				</div>
+			</section>
+	</section>
+</div>
+
+</body>
+</html>
+<script src="Javascript/fun.js"></script>
+<script src="Javascript/basePage.js"></script>
+<script>
+var get_id = GetQueryString('uid'),
+	check_id = JSON.parse(localStorage.getItem('userMessage'));
+
+	new Vue({
+		el:'#wrap',
+		data:{
+			userUrl:'php/user.php',
+			itemUrl:'php/item.php',
+			userEmail:'',
+			userPhone:'',
+			userData:[],//用户数据
+			itemData:[],//项目数据
+			modifyUserData:false,//修改信息的Btn
+			userModifyPage:false,//修改信息的模态窗口
+			image:'',//头像
+			userSubActive:'确认'
+		},
+		created(){
+			/*判断个人信息与登录用户是否是同一个人*/
+			if(get_id==check_id.userId){
+				this.modifyUserData=true;
+			}
+			/*获取用户基础信息*/
+		    userListMsg={userListMsg:'userListMsg',id:get_id}
+			this.$http.post(this.userUrl,userListMsg).then(function(data){
+				data.body.forEach((el,i)=>{
+					switch(el.show_switch){
+						case '3' :
+							el.type = "管理组";
+						break;
+						case '2' :
+							el.type = "脱产组";
+						break;
+						case '1' :
+							el.type = "业余组";
+						break;
+						case '0' :
+							el.type = "原业余组";
+						break;
+					}
+					el.face_url = el.face_url!="" ? 'Photo/face/'+el.face_url : 'Images/logo.png';
+					this.userEmail = el.username;
+					this.userPhone = el.Phone;
+					this.image = el.face_url;
+				})
+				this.userData = data.body;
+			})
+			/*获取用户项目数据*/
+			userListItem={userListItem:'userListItem',id:get_id}
+	    	this.$http.post(this.itemUrl,userListItem).then(function(data){
+
+				data.body.forEach((el,i)=>{
+					el.item_photo = 'Photo/item/'+el.item_photo;
+					el.item_description = el.itemDescription!="" ? el.itemDescription : '此人较懒，暂无项目描述';
+					el.item_url =el.item_url+'?key='+el.key;
+				})
+	    		this.itemData = data.body;
+	    	})
+		},
+		methods:{
+			/*显示修改信息面板*/
+			modifyUserDataShow(){
+				this.userModifyPage = true;
+			},
+			modifyUserDataHide(){/*隐藏修改信息面板*/
+				this.userModifyPage = false;
+			},
+			onFileChange(e) {//上传图片
+		      var files = e.target.files || e.dataTransfer.files;
+		      if (!files.length)
+		        return;
+		      this.createImage(files[0]);
+		    },
+			createImage(file) {//将上传图片转为base64格式
+				var image = new Image();
+				var reader = new FileReader();
+
+				reader.onload = (e) => {
+					this.image = e.target.result;
+				};
+				reader.readAsDataURL(file);
+			},
+			userEditSub(){/*修改信息*/
+				this.image = this.image.indexOf('base64')>-1 ? this.image : this.userData[0].face_url;
+				userData = {user_update_sub:' ',img:this.image,uid:this.userData[0].id,email:this.userEmail,phone:this.userPhone}
+				this.$http.post(this.userUrl,userData).then(function(data){
+					this.userSubActive = '修改成功';
+					setTimeout(function() {
+						window.location.href = 'user.html?uid='+check_id.userId;
+					},1000)
+			    })
+			}
+		}
+	})
+</script>

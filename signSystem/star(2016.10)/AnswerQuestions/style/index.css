@@ -1,0 +1,131 @@
+.admin{
+	width: 15%;
+	position: fixed;
+	top: 60px;
+	right: 0;
+	height: 100%;
+	background: #fff;
+	-webkit-transform: translate(100%, 0px);
+	transform: translate(100%, 0px);
+}
+.por{position: relative;}
+.admin_content{
+	height:150px;
+	width: 98%;
+	border: 1px dashed #ccc;
+	margin: auto;
+}
+/*.admin_content_icon {
+	background: #3bd9f1;
+	width: 90px;
+	height: 30px;
+	border-radius: 20px 0 0 20px;
+	position: absolute;
+	top: 60%;
+	right:288px;
+	color: #333;
+	cursor: pointer;
+	font-style: normal;
+	text-indent: 19px;
+	line-height: 30px;
+}*/
+
+#tfile{
+	border: 1px solid #ccc;
+	height: 25px;
+	margin:10px  0px 10px 6px;
+	border-radius: 5px;
+	width: 70%;
+	text-indent: 10px;
+}
+.btn{
+	width: 25%;
+	height: 25px;
+	background: #fff;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+.form_text{
+	position: relative;
+}
+#filepoa{
+	position: absolute;
+	left: 5px;
+	width: 100%;
+	height: 25px;
+	bottom: 79px;
+	cursor: pointer; 
+	opacity: 0;
+	filter:alpha(opacity:0); 
+}
+.form_text button{
+	width: 96%;
+	height: 30px;
+	border-radius: 5px;
+	border: 0;
+	background: #3bd9f1;
+	color: #f7f0f0;
+	font-size: 18px;
+	margin-left: 10px;
+}
+#rank{
+	width: 95%;
+	height: 30px;
+	margin: 5px 0px;
+	border-radius: 5px;
+	text-indent: 10px;
+	border: 1px solid #ccc;
+	margin-left: 10px;
+}
+
+
+.content h2{
+	font-weight: normal;
+	padding: 10px 0;
+	text-align: center;
+}
+
+.box {
+	position: relative; 
+	width: 1000px; 
+	margin: 30px auto;
+}
+.lineF, .lineS {
+	position: absolute; 
+	visibility: hidden; 
+}
+.lineS {
+	top: 182px; 
+	left: 105px;
+}
+.boxF, .boxS, .boxT, .overlay {
+	width: 100px; 
+	height: 150px; 
+	overflow: hidden; 
+}
+.boxF, .boxS {visibility: hidden; }
+.boxF {transform: rotate(120deg)  translateZ(0); 
+	float: left; 
+	margin-left: 10px; 
+	-webkit-transform: rotate(120deg)  translateZ(0); 
+}
+.boxS {
+		transform: rotate(-60deg)  translateZ(0);
+		-webkit-transform: rotate(-60deg)  translateZ(0);
+}
+.boxT {
+		transform: rotate(-60deg)  translateZ(0); 
+		background: no-repeat 50% center;
+		background-size: 125% auto; 
+		-webkit-transform: rotate(-60deg)  translateZ(0); 
+		visibility: visible; 
+		display: block; 
+		background-repeat: no-repeat;
+		background-position: center;
+		-webkit-background-size: 130%;
+		background-size: 130%;
+}
+
+
+
